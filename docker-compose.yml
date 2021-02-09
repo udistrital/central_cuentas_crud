@@ -1,0 +1,36 @@
+version: '3'
+
+services: 
+    # mongo:
+    #     image: mongo
+    #     restart: always
+    #     container_name: mongodb
+    #     environment: 
+    #         - MONGO_INITDB_ROOT_USERNAME=test
+    #         - MONGO_INITDB_ROOT_PASSWORD=test
+    #     ports: 
+    #         - 27019:27017
+    #     expose: 
+    #         - 27019
+    
+    back:
+        container_name: "central-cuentas-service"
+        restart: always
+        # environment: 
+        #     - COLLECTION_MONGO=heroes_mongo
+        #     - DB_MONGO=test
+        #     - USER_MONGO=test
+        #     - PASS_MONGO=test
+        #     - HOST_MONGO=mongo
+        #     - PORT_MONGO=27017
+        command: 
+        - npm i
+        build: .
+        ports: 
+            - 3000:3000
+        volumes: 
+            - .:/usr/src/app
+        # depends_on: 
+        #     - mongo
+        # links: 
+        #     - mongo
