@@ -23,9 +23,9 @@ services:
         #     - PASS_MONGO=test
         #     - HOST_MONGO=mongo
         #     - PORT_MONGO=27017
-        command: 
-        - npm i
-        build: .
+        build: 
+            context: .
+            dockerfile: Dockerfile.build
         ports: 
             - 3000:3000
         volumes: 
