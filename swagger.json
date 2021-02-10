@@ -1,0 +1,1 @@
+{"openapi":"3.0.0","info":{"title":"central_cuentas_crud","description":"API CRUD para la gestion de ordenes de pago y relaciones de autorizacion.","version":"1.0","contact":{}},"tags":[],"servers":[],"components":{},"paths":{"/":{"get":{"operationId":"AppController_getHello","parameters":[],"responses":{"200":{"description":""}}}}}}

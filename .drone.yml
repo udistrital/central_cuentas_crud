@@ -4,7 +4,7 @@ workspace:
   when:
       branch:
       - develop
-      - release/*
+      - release
       - master
       - feature/*
 
@@ -20,7 +20,7 @@ steps:
     branch:
     - develop
     - feature/*
-    - release/*
+    - release
     event:
     - push
 
@@ -32,7 +32,7 @@ steps:
     branch:
     - develop
     - feature/*
-    - release/*
+    - release
     event:
     - push
 
@@ -44,7 +44,7 @@ steps:
     branch:
     - develop
     - feature/*
-    - release/*
+    - release
     event:
     - push
 
@@ -57,7 +57,7 @@ steps:
   when:
     branch:
     - develop
-    - release/*
+    - release
     - master
     - feature/*
     event:
@@ -87,7 +87,7 @@ steps:
       - release
   when:
     branch:
-    - release/*
+    - release
     
     event:
     - push
@@ -122,7 +122,7 @@ steps:
       from_secret: AWS_CONTAINER
   commands:
   - case ${DRONE_BRANCH} in
-       release/*)
+       release)
          AMBIENTE=test
          CLUSTER=test
          MYCONTAINER=$${AWS_CONTAINER}/${DRONE_REPO##udistrital/}:release
@@ -144,7 +144,7 @@ steps:
     $GOPATH/bin/update-aws-ecs-service -cluster $CLUSTER -service $SERVICE -container-image $MYCONTAINER
   when:
     branch:
-    - release/*
+    - release
     - master
     event:
     - push
@@ -176,7 +176,7 @@ steps:
   when:
     branch:
     - develop
-    - release/*
+    - release
     - master
     event:
     - push
