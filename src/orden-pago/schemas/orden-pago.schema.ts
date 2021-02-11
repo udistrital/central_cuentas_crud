@@ -1,7 +1,7 @@
 import { Prop, raw, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { ImputacionPresupuestal } from './imputacion-presupuestal.schema';
-import { MovimientoContable } from './movimiento-contable.schema';
+import { ImputacionPresupuestal,ImputacionPresupuestalSchema } from './imputacion-presupuestal.schema';
+import { MovimientoContable,MovimientoContableSchema } from './movimiento-contable.schema';
 import * as mongoose from 'mongoose';
 
 @Schema( { collection: 'orden_pago' } )
@@ -41,10 +41,10 @@ export class OrdenPago extends Document { // OrdenPago
     @Prop()
     Concepto_id: string;
     // @Prop()
-    @Prop( { type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ImputacionPresupuestal' }] } )
+    @Prop( { type: [{ type: ImputacionPresupuestalSchema, ref: 'ImputacionPresupuestal' }] } )
     Imputacion_presupuestal: ImputacionPresupuestal[];
-    @Prop( { type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'MovimientoContable' }] } )
-    Imputacion_preMovimiento_contablesupuestal: MovimientoContable[];
+    @Prop( { type: [{ type: MovimientoContableSchema, ref: 'MovimientoContable' }] } )
+    Movimiento_contable: MovimientoContable[];
 }
 
 export const OrdenPagoSchema = SchemaFactory.createForClass(OrdenPago);

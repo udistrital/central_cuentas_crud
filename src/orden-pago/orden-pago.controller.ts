@@ -1,11 +1,15 @@
-import { Controller, Post , Body, Get, Put, Param, Delete, Query} from '@nestjs/common';
+import { Query,Controller, Res, Post, Get, Put, Delete, Param, Body, HttpStatus, NotFoundException} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import {OrdenPagoDto} from './dto/orden-pago.dto'
+import { OrdenPagoDto } from './dto/orden-pago.dto'
+import { OrdenPagoService } from './orden-pago.service';
 
 @ApiTags('orden-pago')
 @Controller('orden-pago')
 export class OrdenPagoController {
-    @Post() // http://localhost:3000/heroes
-    post(@Body() ordenPagoDto: OrdenPagoDto ) {
+
+    constructor(private readonly ordenPagoService: OrdenPagoService) { }
+    @Post()
+    async post(@Body() ordenPagoDto: OrdenPagoDto) {
+        return this.ordenPagoService.post(ordenPagoDto);
     }
 }

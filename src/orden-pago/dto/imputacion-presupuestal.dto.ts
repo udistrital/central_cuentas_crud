@@ -2,7 +2,12 @@ import { ApiProperty } from '@nestjs/swagger';
 
 
 export class ImputacionPresupuestalDto {
-    @ApiProperty( {default: true } )
+    @ApiProperty()
+    readonly Fecha_creacion: Date;
+
+    @ApiProperty()
+    Fecha_modificacion: Date;
+    @ApiProperty({ default: true })
     readonly Activo: boolean;
     @ApiProperty()
     readonly Numero_cdp: number;
