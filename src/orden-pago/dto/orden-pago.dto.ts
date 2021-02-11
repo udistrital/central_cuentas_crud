@@ -1,1 +1,30 @@
 import { ApiProperty } from '@nestjs/swagger';
+import {ImputacionPresupuestalDto} from './imputacion-presupuestal.dto';
+import {MovimientoContableDto} from './movimiento-contable.dto'
+
+export class OrdenPagoDto {
+    @ApiProperty( {default: true } )
+    readonly Activo: boolean;
+    @ApiProperty()
+    readonly Numero: number;
+    @ApiProperty()
+    readonly Solicitante_id: number;
+    @ApiProperty()
+    readonly Beneficiario_id: number;
+    @ApiProperty()
+    readonly Tipo_compromiso_id: number;
+    @ApiProperty()
+    readonly Numero_compromiso: number;
+    @ApiProperty()
+    readonly Vigencia: number;
+    @ApiProperty()
+    readonly Area_funcional: string;
+    @ApiProperty()
+    readonly Concepto_id: string;
+    // @ApiProperty()
+    // readonly estados
+    @ApiProperty()
+    readonly Imputacion_presupuestal: ImputacionPresupuestalDto;
+    @ApiProperty()
+    readonly Movimiento_contable: MovimientoContableDto;
+  }
