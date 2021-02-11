@@ -5,6 +5,7 @@ import { ConfigModule } from './config/config.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Configuration } from './config/configuration';
 import { OrdenPagoModule } from './orden-pago/orden-pago.module';
+import { FiltersService } from './shared/filters/filters.service';
 
 
 
@@ -17,6 +18,6 @@ import { OrdenPagoModule } from './orden-pago/orden-pago.module';
     OrdenPagoModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, FiltersService],
 })
 export class AppModule {}
