@@ -4,13 +4,13 @@ import { Document } from 'mongoose';
 @Schema({ collection: 'imputacion_presupuestal' })
 export class ImputacionPresupuestal extends Document {
 
-    @Prop()
+    @Prop({required:false })
     Fecha_creacion: Date;
 
-    @Prop({ default: new Date() })
+    @Prop({required:false , default: new Date() })
     Fecha_modificacion: Date;
 
-    @Prop( { default: true } )
+    @Prop( {required:false , default: true } )
     Activo: boolean
     
     @Prop()

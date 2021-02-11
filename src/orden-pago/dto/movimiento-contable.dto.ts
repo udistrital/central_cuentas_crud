@@ -5,7 +5,7 @@ export class MovimientoContableDto {
     @ApiProperty()
     readonly Fecha_creacion: Date;
 
-    @ApiProperty()
+    @ApiProperty({ default: new Date() })
     Fecha_modificacion: Date;
     @ApiProperty({ default: true })
     readonly Activo: boolean;

@@ -2,19 +2,19 @@ import { Prop, raw, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { ImputacionPresupuestal,ImputacionPresupuestalSchema } from './imputacion-presupuestal.schema';
 import { MovimientoContable,MovimientoContableSchema } from './movimiento-contable.schema';
-import * as mongoose from 'mongoose';
+import { Estados, EstadosSchema } from './estados.schema';
 
 @Schema( { collection: 'orden_pago' } )
 export class OrdenPago extends Document { // OrdenPago
     // @Prop()
     // _id: String
-    @Prop()
+    @Prop({required:false })
     Fecha_creacion: Date;
 
-    @Prop({ default: new Date() })
+    @Prop({required:false , default: new Date() })
     Fecha_modificacion: Date;
 
-    @Prop( { default: true } )
+    @Prop( {required:false , default: true } )
     Activo: boolean
 
     @Prop()
@@ -40,9 +40,13 @@ export class OrdenPago extends Document { // OrdenPago
 
     @Prop()
     Concepto_id: string;
-    // @Prop()
+
+    @Prop( { type: [EstadosSchema] } )
+    Estados: Estados[];
+
     @Prop( { type: [{ type: ImputacionPresupuestalSchema, ref: 'ImputacionPresupuestal' }] } )
     Imputacion_presupuestal: ImputacionPresupuestal[];
+
     @Prop( { type: [{ type: MovimientoContableSchema, ref: 'MovimientoContable' }] } )
     Movimiento_contable: MovimientoContable[];
 }

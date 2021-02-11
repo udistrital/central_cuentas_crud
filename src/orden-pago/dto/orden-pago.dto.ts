@@ -1,15 +1,16 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { ImputacionPresupuestalDto } from './imputacion-presupuestal.dto';
 import { MovimientoContableDto } from './movimiento-contable.dto'
+import { EstadosDto } from './estados.dto';
 
 export class OrdenPagoDto {
-  @ApiProperty()
+  @ApiProperty({ required: false })
   readonly Fecha_creacion: Date;
 
-  @ApiProperty()
+  @ApiProperty({ required: false, default: new Date() })
   Fecha_modificacion: Date;
-  
-  @ApiProperty({ default: true })
+
+  @ApiProperty({ required: false, default: true })
   readonly Activo: boolean;
   @ApiProperty()
   readonly Numero: number;
@@ -27,8 +28,16 @@ export class OrdenPagoDto {
   readonly Area_funcional: string;
   @ApiProperty()
   readonly Concepto_id: string;
-  // @ApiProperty()
-  // readonly estados
+  @ApiProperty({
+    type: EstadosDto, isArray: true, required: true,
+    default: [{
+      Fecha_creacion: new Date(),
+      Fecha_modificacion: new Date(),
+      Activo: true,
+      Nombre: 'Creada'
+    }]
+  })
+  readonly Estados: EstadosDto[];
   @ApiProperty({ type: ImputacionPresupuestalDto, isArray: true })
   readonly Imputacion_presupuestal: ImputacionPresupuestalDto[];
   @ApiProperty({ type: MovimientoContableDto, isArray: true })

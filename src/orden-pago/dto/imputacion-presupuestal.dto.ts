@@ -5,8 +5,8 @@ export class ImputacionPresupuestalDto {
     @ApiProperty()
     readonly Fecha_creacion: Date;
 
-    @ApiProperty()
-    Fecha_modificacion: Date;
+    @ApiProperty({ default: new Date() })
+    readonly Fecha_modificacion: Date;
     @ApiProperty({ default: true })
     readonly Activo: boolean;
     @ApiProperty()
