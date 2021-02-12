@@ -23,7 +23,12 @@ export class OrdenPagoService {
         Success: true
       }
     } catch (error) {
-      throw new HttpException(error, error.statusCode)
+      throw new HttpException({
+        Data: error,
+        Message: error.message,
+        Status: 400,
+        Success: false
+      }, 400)
 
     }
   }
@@ -36,11 +41,16 @@ export class OrdenPagoService {
       return {
         Data: getAll,
         Message: "Request successfull",
-        Status: "200",
+        Status: 200,
         Success: true
       }
     } catch (error) {
-
+      throw new HttpException({
+        Data: error,
+        Message: error.message,
+        Status: 404,
+        Success: false
+      },404);
     }
   }
 
@@ -60,11 +70,16 @@ export class OrdenPagoService {
       return {
         Data: find,
         Message: "Update successfull",
-        Status: "200",
+        Status: 200,
         Success: true
       }
     } catch (error) {
-      return new HttpException(error, error.statusCode);
+      throw new HttpException({
+        Data: error,
+        Message: error.message,
+        Status: 404,
+        Success: false
+      }, 400);
     }
   }
 
@@ -76,11 +91,16 @@ export class OrdenPagoService {
           _id: id
         },
         Message: "Delete successfull",
-        Status: "200",
+        Status: 200,
         Success: true
       }
     } catch (error) {
-      return new HttpException(error, error.statusCode);;
+      throw new HttpException({
+        Data: error,
+        Message: error.message,
+        Status: 404,
+        Success: "holi"
+      }, 404);;
     }
   }
 }
