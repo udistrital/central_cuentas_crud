@@ -1,75 +1,84 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# central_cuentas_crud
 
-[travis-image]: https://api.travis-ci.org/nestjs/nest.svg?branch=master
-[travis-url]: https://travis-ci.org/nestjs/nest
-[linux-image]: https://img.shields.io/travis/nestjs/nest/master.svg?label=linux
-[linux-url]: https://travis-ci.org/nestjs/nest
-  
-  <p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications, heavily inspired by <a href="https://angular.io" target="blank">Angular</a>.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/dm/@nestjs/core.svg" alt="NPM Downloads" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://api.travis-ci.org/nestjs/nest.svg?branch=master" alt="Travis" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://img.shields.io/travis/nestjs/nest/master.svg?label=linux" alt="Linux" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#5" alt="Coverage" /></a>
-<a href="https://gitter.im/nestjs/nestjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge"><img src="https://badges.gitter.im/nestjs/nestjs.svg" alt="Gitter" /></a>
-<a href="https://opencollective.com/nest#backer"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec"><img src="https://img.shields.io/badge/Donate-PayPal-dc3d53.svg"/></a>
-  <a href="https://twitter.com/nestframework"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+API CRUD para la gestion de ordenes de pago y relaciones de autorizacion.
 
-## Description
+## Especificaciones Técnicas
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Tecnologías Implementadas y Versiones
+* [NestJS](https://github.com/nestjs/nest)
+* [Docker](https://docs.docker.com/engine/install/ubuntu/)
+* [Docker Compose](https://docs.docker.com/compose/)
 
-## Installation
-
+### Variables de Entorno
 ```bash
-$ npm install
+CENTRAL_CUENTAS_PORT=[puerto del api]
+CENTRAL_CUENTAS_MONGO_URL=[url o ip del servicio]
+CENTRAL_CUENTAS_MONGO_PORT=[puerto de mongo]
+CENTRAL_CUENTAS_MONGO_USER=[usuario]
+CENTRAL_CUENTAS_MONGO_PASS=[contraseña]
+CENTRAL_CUENTAS_MONGO_DB_NAME=[nombre de base de datos]
+CENTRAL_CUENTAS_MONGO_DB_AUTH=[nombre de base de datos de autenticacion]
+```
+**NOTA:** Las variables se pueden ver en el fichero conf/app.conf y están identificadas con CENTRAL_CUENTAS___...
+
+<!-- ### Ejecución del Proyecto
+```shell
+#1. Obtener el repositorio con Go
+git clone https://github.com/udistrital/evaluaciones_mongo_crud
+
+#2. Moverse a la carpeta del repositorio
+cd evaluaciones_mongo_crud
+
+# 3. Moverse a la rama **develop**
+git pull origin develop && git checkout develop
+
+4. Instalar dependencias
+npm install
+
+# 5. Alimentar todas las variables de entorno que utiliza el proyecto.
+EVALUACIONES_MONGO_CRUD=8080 EVALUACIONES_MONGO_CRUD=127.0.0.1:27017 EVALUACIONES_MONGO_CRUD_SOME_VARIABLE=some_value nest run -->
+<!-- ``` -->
+<!-- ### Ejecución Dockerfile
+```shell
+# docker build --tag=evaluaciones_mongo_crud . --no-cache
+# docker run -p 80:80 evaluaciones_mongo_crud
+``` -->
+
+### Ejecución docker-compose
+```bash
+#1. Clonar el repositorio
+git clone -b develop https://github.com/udistrital/central_cuentas_crud
+
+#2. Moverse a la carpeta del repositorio
+cd central_cuentas_crud
+
+#3. Compilar imagen
+docker-compose build
+
+#5. Ejecutar el compose del contenedor
+docker-compose up 
+
+#6. Comprobar que los contenedores estén en ejecución
+docker ps
 ```
 
-## Running the app
+### Ejecución Pruebas
 
+Pruebas unitarias
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+# En Proceso
 ```
 
-## Test
+## Modelo de Datos
+[Modelo de Datos](https://github.com/udistrital/financiera_documentacion/blob/master/central_cuentas/orden_pago/orden_pafo.md)
 
-```bash
-# unit tests
-$ npm run test
 
-# e2e tests
-$ npm run test:e2e
+## Licencia
 
-# test coverage
-$ npm run test:cov
-```
+This file is part of parametros_crud.
 
-## Support
+evaluaciones_mongo_crud is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+evaluaciones_mongo_crud is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-  Nest is [MIT licensed](LICENSE).
+You should have received a copy of the GNU General Public License along with parametros_crud. If not, see https://www.gnu.org/licenses/.
