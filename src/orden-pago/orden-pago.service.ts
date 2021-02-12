@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { OrdenPago } from './schemas/orden-pago.schema';
@@ -10,17 +10,38 @@ import { FiltersService } from '../shared/filters/filters.service';
 export class OrdenPagoService {
   constructor(@InjectModel(OrdenPago.name) private readonly ordenPagoModel: Model<OrdenPago>) { }
 
-  async post(ordenPagoDto: OrdenPagoDto): Promise<OrdenPagoDto> {
-    const ordenPago = new this.ordenPagoModel(ordenPagoDto);
-    ordenPago.Fecha_creacion = new Date();
-    ordenPago.Fecha_modificacion = new Date();
-    return ordenPago.save();
+  async post(ordenPagoDto: OrdenPagoDto) {
+    try {
+      const ordenPago = new this.ordenPagoModel(ordenPagoDto);
+      ordenPago.Fecha_creacion = new Date();
+      ordenPago.Fecha_modificacion = new Date();
+      const postOrdenPago = await ordenPago.save();
+      return {
+        Data: postOrdenPago,
+        Message: "Registration successfull",
+        Status: "201",
+        Success: true
+      }
+    } catch (error) {
+      throw new HttpException(error, error.statusCode)
+
+    }
   }
-  async getAll(filterDto: FilterDto): Promise<OrdenPago[]> {
-    const filtersService = new FiltersService(filterDto);
-    return await this.ordenPagoModel.find(filtersService.getQuery(), filtersService.getFields(), filtersService.getLimitAndOffset())
-      .sort(filtersService.getSortBy())
-      .exec();
+  async getAll(filterDto: FilterDto): Promise<any> {
+    try {
+      const filtersService = new FiltersService(filterDto);
+      const getAll = await this.ordenPagoModel.find(filtersService.getQuery(), filtersService.getFields(), filtersService.getLimitAndOffset())
+        .sort(filtersService.getSortBy())
+        .exec();
+      return {
+        Data: getAll,
+        Message: "Request successfull",
+        Status: "200",
+        Success: true
+      }
+    } catch (error) {
+
+    }
   }
 
   async getById(id: string): Promise<OrdenPago> {
@@ -31,21 +52,35 @@ export class OrdenPagoService {
     }
   }
 
-  async put(id: string, ordenPagoDto: OrdenPagoDto): Promise<OrdenPago> {
+  async put(id: string, ordenPagoDto: OrdenPagoDto): Promise<any> {
     try {
       ordenPagoDto.Fecha_modificacion = new Date();//pendiente definir la actualizacion de fechas de modificacion para todas las colecciones
       await this.ordenPagoModel.findByIdAndUpdate(id, ordenPagoDto, { new: true }).exec();
-      return await this.ordenPagoModel.findById(id).exec();
+      const find = await this.ordenPagoModel.findById(id).exec();
+      return {
+        Data: find,
+        Message: "Update successfull",
+        Status: "200",
+        Success: true
+      }
     } catch (error) {
-      return null;
+      return new HttpException(error, error.statusCode);
     }
   }
 
   async delete(id: string): Promise<any> {
     try {
-      return await this.ordenPagoModel.findByIdAndRemove(id).exec();
+      const deleteOrden = await this.ordenPagoModel.findByIdAndRemove(id).exec();
+      return {
+        Data: {
+          _id: id
+        },
+        Message: "Delete successfull",
+        Status: "200",
+        Success: true
+      }
     } catch (error) {
-      return null;
+      return new HttpException(error, error.statusCode);;
     }
   }
 }
