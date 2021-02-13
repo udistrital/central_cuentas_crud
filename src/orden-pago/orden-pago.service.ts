@@ -5,10 +5,14 @@ import { OrdenPago } from './schemas/orden-pago.schema';
 import { OrdenPagoDto } from './dto/orden-pago.dto';
 import { FilterDto } from '../shared/dto/filter.dto';
 import { FiltersService } from '../shared/filters/filters.service';
+import { EstadosService } from '../estados/estados.service';
+import { EstadosDto } from '../estados/dto/estados.dto'
 
 @Injectable()
 export class OrdenPagoService {
-  constructor(@InjectModel(OrdenPago.name) private readonly ordenPagoModel: Model<OrdenPago>) { }
+  constructor(@InjectModel(OrdenPago.name) private readonly ordenPagoModel: Model<OrdenPago>,
+  private estadosService: EstadosService,
+  ) { }
 
   async post(ordenPagoDto: OrdenPagoDto) {
     try {
@@ -16,6 +20,18 @@ export class OrdenPagoService {
       ordenPago.Fecha_creacion = new Date();
       ordenPago.Fecha_modificacion = new Date();
       const postOrdenPago = await ordenPago.save();
+      console.log(postOrdenPago['_id'])
+      await this.estadosService.post( {
+        Activo: true,
+        Descripcion: '',
+        Estado_id: ordenPagoDto.Estados.Estado_id,
+        Fecha_creacion: new Date(),
+        Fecha_modificacion: new Date(),
+        Documento: {
+          Coleccion: 'orden_pago',
+          Documento_id: postOrdenPago['_id']
+        }
+      } )
       return {
         Data: postOrdenPago,
         Message: "Registration successfull",

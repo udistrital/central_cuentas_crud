@@ -8,6 +8,8 @@ services:
         environment: 
             - MONGO_INITDB_ROOT_USERNAME=${CENTRAL_CUENTAS_MONGO_USER}
             - MONGO_INITDB_ROOT_PASSWORD=${CENTRAL_CUENTAS_MONGO_PASS}
+        volumes:
+            - mongo_data:/data/db
         ports: 
             - ${CENTRAL_CUENTAS_MONGO_PORT}:${CENTRAL_CUENTAS_MONGO_PORT}
         expose: 
@@ -37,3 +39,6 @@ services:
             - mongo
         links: 
             - mongo
+
+volumes:
+  mongo_data:

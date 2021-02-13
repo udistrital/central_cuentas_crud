@@ -11,6 +11,7 @@ import { FiltersService } from '../shared/filters/filters.service';
   providers: [
     EstadosService,
     FiltersService,
-  ]
+  ],
+  exports: [EstadosService]
 })
 export class EstadosModule {}

@@ -29,16 +29,16 @@ export class OrdenPagoDto {
   @ApiProperty()
   readonly Concepto_id: string;
   @ApiProperty({
-    type: EstadosOrdenDto, isArray: true, required: true,
-    default: [{
+    type: EstadosOrdenDto, required: true,
+    default: {
       Fecha_creacion: new Date(),
       Fecha_modificacion: new Date(),
       Activo: true,
       Nombre: 'Elaborada',
       Estado_id: 317
-    }]
+    }
   })
-  readonly Estados: EstadosOrdenDto[];
+  readonly Estados: EstadosOrdenDto;
   @ApiProperty({ type: ImputacionPresupuestalDto, isArray: true })
   readonly Imputacion_presupuestal: ImputacionPresupuestalDto[];
   @ApiProperty({ type: MovimientoContableDto, isArray: true })

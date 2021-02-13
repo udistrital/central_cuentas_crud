@@ -41,8 +41,8 @@ export class OrdenPago extends Document { // OrdenPago
     @Prop()
     Concepto_id: string;
 
-    @Prop( { type: [EstadoOrdenSchema] } )
-    Estados: EstadoOrden[];
+    @Prop( { type: EstadoOrdenSchema } )
+    Estados: EstadoOrden;
 
     @Prop( { type: [{ type: ImputacionPresupuestalSchema, ref: 'ImputacionPresupuestal' }] } )
     Imputacion_presupuestal: ImputacionPresupuestal[];
