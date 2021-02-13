@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Configuration } from './config/configuration';
 import { OrdenPagoModule } from './orden-pago/orden-pago.module';
 import { FiltersService } from './shared/filters/filters.service';
+import { EstadosModule } from './estados/estados.module';
 
 
 
@@ -15,7 +16,8 @@ import { FiltersService } from './shared/filters/filters.service';
     MongooseModule.forRoot(`mongodb://${Configuration.environment.USER_DB}:${Configuration.environment.PASS_DB}@`+
     `${Configuration.environment.HOST_DB}:${Configuration.environment.PORT_DB}/${Configuration.environment.NAME_DB}?authSource=${Configuration.environment.AUTH_DB}`,
     { useFindAndModify: false }),
-    OrdenPagoModule
+    OrdenPagoModule,
+    EstadosModule
   ],
   controllers: [AppController],
   providers: [AppService, FiltersService],

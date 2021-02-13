@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class EstadosDto {
+export class EstadosOrdenDto {
     @ApiProperty({required:false })
     readonly Fecha_creacion: Date;
     @ApiProperty({required:false , default: new Date() })
