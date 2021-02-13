@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 @Schema({ collection: 'estados' })
-export class Estados extends Document {
+export class EstadoOrden extends Document {
 
     @Prop()
     Fecha_creacion: Date;
@@ -17,7 +17,10 @@ export class Estados extends Document {
     Nombre: string;
     
     @Prop()
+    Estado_id: number;
+    
+    @Prop()
     Descripcion: string;
 };
 
-export const EstadosSchema = SchemaFactory.createForClass(Estados);
+export const EstadoOrdenSchema = SchemaFactory.createForClass(EstadoOrden);

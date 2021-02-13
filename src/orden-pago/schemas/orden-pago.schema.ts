@@ -2,7 +2,7 @@ import { Prop, raw, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { ImputacionPresupuestal,ImputacionPresupuestalSchema } from './imputacion-presupuestal.schema';
 import { MovimientoContable,MovimientoContableSchema } from './movimiento-contable.schema';
-import { Estados, EstadosSchema } from './estados.schema';
+import { EstadoOrdenSchema, EstadoOrden } from './estados-orden.schema';
 
 @Schema( { collection: 'orden_pago' } )
 export class OrdenPago extends Document { // OrdenPago
@@ -41,8 +41,8 @@ export class OrdenPago extends Document { // OrdenPago
     @Prop()
     Concepto_id: string;
 
-    @Prop( { type: [EstadosSchema] } )
-    Estados: Estados[];
+    @Prop( { type: EstadoOrdenSchema } )
+    Estados: EstadoOrden;
 
     @Prop( { type: [{ type: ImputacionPresupuestalSchema, ref: 'ImputacionPresupuestal' }] } )
     Imputacion_presupuestal: ImputacionPresupuestal[];
