@@ -9,6 +9,8 @@ export class EstadosOrdenDto {
     readonly Activo: boolean;
     @ApiProperty()
     readonly Nombre: string;
+    @ApiProperty()
+    readonly Estado_id: number;
     @ApiProperty( {required:false} )
     readonly Descripcion: string;
 }

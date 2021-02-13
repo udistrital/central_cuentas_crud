@@ -34,7 +34,8 @@ export class OrdenPagoDto {
       Fecha_creacion: new Date(),
       Fecha_modificacion: new Date(),
       Activo: true,
-      Nombre: 'Creada'
+      Nombre: 'Elaborada',
+      Estado_id: 317
     }]
   })
   readonly Estados: EstadosOrdenDto[];

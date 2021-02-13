@@ -17,6 +17,9 @@ export class EstadoOrden extends Document {
     Nombre: string;
     
     @Prop()
+    Estado_id: number;
+    
+    @Prop()
     Descripcion: string;
 };
 

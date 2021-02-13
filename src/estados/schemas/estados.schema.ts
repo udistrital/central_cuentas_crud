@@ -14,7 +14,7 @@ export class Estados extends Document {
     Activo: boolean
     
     @Prop()
-    Estado_id: string;
+    Estado_id: number;
     
     @Prop()
     Descripcion: string;

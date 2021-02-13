@@ -10,18 +10,18 @@ export class EstadosController {
     constructor(private readonly estadosService: EstadosService) { }
     @Post()
     post(@Body() estadosDto: EstadosDto) {
-        // return this.estadosService.post(estadosDto);
+        return this.estadosService.post(estadosDto);
     }
     @Get()
     get(@Query() filterDto: FilterDto) {
-        // return this.estadosService.getAll(filterDto)
+        return this.estadosService.getAll(filterDto)
     }
     @Put('/:id')
     put(@Param('id') id: string, @Body() estadosDto: EstadosDto) {
-        // return this.estadosService.put(id, estadosDto)
+        return this.estadosService.put(id, estadosDto)
     }
     @Delete('/:id')
     delete(@Param('id') id: string) {
-        // return this.estadosService.delete(id)
+        return this.estadosService.delete(id)
     }
 }
