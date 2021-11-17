@@ -38,7 +38,7 @@ export class AutorizacionGiro extends Document {
     Valor_Numeros: number;
 
     @Prop( { type: [{ type: DocumentoSchema, ref: 'DocumentoSchema' }] } )
-    Documento: Documento[];
+    Documentos: Documento[];
 }
 
 export const AutorizacionGiroSchema = SchemaFactory.createForClass(AutorizacionGiro);

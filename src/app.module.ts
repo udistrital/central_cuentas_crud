@@ -14,12 +14,11 @@ import { AutorizacionGiroModule } from './autorizacion-giro/autorizacion-giro.mo
 @Module({
   imports: [
     ConfigModule,
-    //MongooseModule.forRoot('mongodb://localhost/prueba-central-cuentas'),
+    MongooseModule.forRoot('mongodb://localhost/prueba-central-cuentas'),
    // `mongodb://${Configuration.environment.USER_DB}:${Configuration.environment.PASS_DB}@`+
-    
-    MongooseModule.forRoot(`mongodb://${environment.USER_DB}:${environment.PASS_DB}@`+
-    `${environment.HOST_DB}:${environment.PORT_DB}/${environment.NAME_DB}?authSource=${environment.AUTH_DB}`,
-    { useFindAndModify: false }),
+    //MongooseModule.forRoot(`mongodb://${environment.USER_DB}:${environment.PASS_DB}@`+
+    //`${environment.HOST_DB}:${environment.PORT_DB}/${environment.NAME_DB}?authSource=${environment.AUTH_DB}`,
+    //{ useFindAndModify: false }),
     OrdenPagoModule,
     EstadosModule,
     AutorizacionGiroModule

@@ -1,11 +1,11 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { DocumentoDto } from "src/estados/dto/documento.dto";
+import { DocumentoDTO } from "./documento.dto";
 
 export class AutorizacionGiroDTO {
     @ApiProperty({required: false})
     readonly Fecha_Creacion: Date;
     @ApiProperty({required: false, default: new Date()})
-    readonly Fecha_Modificacion: Date;
+    Fecha_Modificacion: Date;
     @ApiProperty({ required: false, default: true })
     readonly Activo: boolean;
     @ApiProperty()
@@ -24,6 +24,8 @@ export class AutorizacionGiroDTO {
     readonly Valor_Letras: string;
     @ApiProperty()
     readonly Valor_Numeros: number
-    @ApiProperty({ type: DocumentoDto, isArray: true})
-    readonly Documentos: DocumentoDto[];
+    @ApiProperty()
+    readonly Estado: string
+    @ApiProperty({ type: DocumentoDTO, isArray: true})
+    readonly Documentos: DocumentoDTO[];
 }

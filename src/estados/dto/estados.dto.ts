@@ -15,3 +15,4 @@ export class EstadosDto {
     @ApiProperty()
     Documento: DocumentoDto;
 }
+

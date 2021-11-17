@@ -4,11 +4,11 @@ import { Document } from 'mongoose';
 @Schema({ collection: 'autorizacion_giro' })
 export class Documento extends Document {
 
-    @Prop({required:false })
-    Fecha_creacion: Date;
+    @Prop({required:false, default: new Date() })
+    Fecha_Creacion: Date;
 
     @Prop({required:false , default: new Date() })
-    Fecha_modificacion: Date;
+    Fecha_Modificacion: Date;
 
     @Prop( {required:false , default: true } )
     Activo: boolean

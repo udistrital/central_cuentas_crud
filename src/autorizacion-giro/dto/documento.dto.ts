@@ -8,5 +8,5 @@ export class DocumentoDTO {
     @ApiProperty({ required: false, default: true })
     readonly Activo: boolean;
     @ApiProperty()
-    readonly Documento: string;
+    Documento: string;
 }
