@@ -29,6 +29,9 @@ export class AutorizacionGiro extends Document {
     Documento_Beneficiario: string;
 
     @Prop()
+    Nombre_Beneficiario: string;
+
+    @Prop()
     Rubro: string;
 
     @Prop()

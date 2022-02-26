@@ -19,6 +19,8 @@ export class AutorizacionGiroDTO {
     @ApiProperty()
     readonly Documento_Beneficiario: string;
     @ApiProperty()
+    readonly Nombre_Beneficiario: string;
+    @ApiProperty()
     readonly Rubro: string;
     @ApiProperty()
     readonly Valor_Letras: string;
