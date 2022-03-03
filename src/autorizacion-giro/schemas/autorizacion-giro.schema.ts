@@ -17,13 +17,16 @@ export class AutorizacionGiro extends Document {
     Numero_Solicitud: number;
 
     @Prop()
-    Area_Funcional: string;
+    Area_Funcional: number;
 
     @Prop()
-    Concepto: string;
+    Concepto: number;
 
     @Prop()
     Documento_Solicitante: string;
+
+    @Prop()
+    Tipo_Doc_Beneficiario: number;
 
     @Prop()
     Documento_Beneficiario: string;
@@ -39,6 +42,9 @@ export class AutorizacionGiro extends Document {
 
     @Prop()
     Valor_Numeros: number;
+
+    @Prop()
+    Estado: string;
 
     @Prop( { type: [{ type: DocumentoSchema, ref: 'DocumentoSchema' }] } )
     Documentos: Documento[];

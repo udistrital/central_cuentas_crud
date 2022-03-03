@@ -11,11 +11,13 @@ export class AutorizacionGiroDTO {
     @ApiProperty()
     readonly Numero_Solicitud: number;
     @ApiProperty()
-    readonly Area_Funcional: string;
+    readonly Area_Funcional: number;
     @ApiProperty()
-    readonly Concepto: string;
+    readonly Concepto: number;
     @ApiProperty()
     readonly Documento_Solicitante: string;
+    @ApiProperty()
+    readonly Tipo_Doc_Beneficiario: number;
     @ApiProperty()
     readonly Documento_Beneficiario: string;
     @ApiProperty()
