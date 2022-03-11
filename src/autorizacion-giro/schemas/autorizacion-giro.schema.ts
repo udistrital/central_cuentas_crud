@@ -46,6 +46,9 @@ export class AutorizacionGiro extends Document {
     @Prop()
     Estado: string;
 
+    @Prop()
+    Motivo_Rechazo: string;
+
     @Prop( { type: [{ type: DocumentoSchema, ref: 'DocumentoSchema' }] } )
     Documentos: Documento[];
 }

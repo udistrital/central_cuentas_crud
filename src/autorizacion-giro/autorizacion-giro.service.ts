@@ -9,7 +9,7 @@ import { FiltersService } from 'src/shared/filters/filters.service';
 @Injectable()
 export class AutorizacionGiroService {
     constructor(@InjectModel(AutorizacionGiro.name) private readonly AutorizacionGiroModel: Model<AutorizacionGiro>) {}
-    
+
     async post(autorizacionGiroDTO: AutorizacionGiroDTO) {
         try {
             const autorizacionGiro = new this.AutorizacionGiroModel(autorizacionGiroDTO);

@@ -30,6 +30,8 @@ export class AutorizacionGiroDTO {
     readonly Valor_Numeros: number
     @ApiProperty()
     readonly Estado: string
+    @ApiProperty()
+    readonly Motivo_Rechazo: string
     @ApiProperty({ type: DocumentoDTO, isArray: true})
     readonly Documentos: DocumentoDTO[];
 }

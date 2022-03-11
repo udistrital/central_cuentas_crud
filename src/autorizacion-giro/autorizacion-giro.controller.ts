@@ -19,7 +19,7 @@ export class AutorizacionGiroController {
     @Get()
     getAll(@Query() filterDto: FilterDto) {
         return this.autorizacionGiroServive.getAll(filterDto)
-    }   
+    }
 
     @Get('/:id')
     async getById(@Res() res, @Param('id') id: string) {
