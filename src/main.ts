@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { Configuration } from './config/configuration';
+import { environment } from './config/configuration';
 import * as fs from 'fs';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
@@ -16,6 +16,6 @@ async function bootstrap() {
   fs.writeFileSync("./swagger.json", JSON.stringify(document));
   SwaggerModule.setup('swagger', app, document);
   
-  await app.listen( parseInt(Configuration.environment.PORT,10) || 3000);
+  await app.listen( parseInt(environment.PORT,10) || 3000);
 }
 bootstrap();

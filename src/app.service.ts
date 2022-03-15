@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { Configuration } from './config/configuration';
+import { environment } from './config/configuration';
 
 @Injectable()
 export class AppService {
   getHello(): string {
-    return `mongodb://${Configuration.environment.USER_DB}:${Configuration.environment.PASS_DB}@`+
-    `${Configuration.environment.HOST_DB}:${Configuration.environment.PORT_DB}/${Configuration.environment.NAME_DB}?authSource=${Configuration.environment.AUTH_DB}`;
+    return `mongodb://${environment.USER_DB}:${environment.PASS_DB}@`+
+    `${environment.HOST_DB}:${environment.PORT_DB}/${environment.NAME_DB}?authSource=${environment.AUTH_DB}`;
   }
 }
