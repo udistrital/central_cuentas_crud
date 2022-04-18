@@ -18,7 +18,6 @@ export class ImputacionPresupuestal extends Document {
 
     @Prop()
     Valor: number;
-
 };
 
 export const ImputacionPresupuestalSchema = SchemaFactory.createForClass(ImputacionPresupuestal);
