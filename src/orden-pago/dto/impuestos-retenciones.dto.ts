@@ -1,15 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 
-export class ImputacionPresupuestalDto {
+export class ImpuestosRetencionesDto {
+    @ApiProperty()
+    readonly Base: number;
     @ApiProperty()
     readonly Codigo: string;
     @ApiProperty()
-    readonly Disponibilidad: string;
+    readonly Descuento: string;
     @ApiProperty()
     readonly Nombre: string;
-    @ApiProperty()
-    readonly Registro: number;
     @ApiProperty()
     readonly Valor: number
 }

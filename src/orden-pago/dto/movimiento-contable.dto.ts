@@ -3,18 +3,9 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class MovimientoContableDto {
     @ApiProperty()
-    readonly Fecha_creacion: Date;
-
-    @ApiProperty({ default: new Date() })
-    Fecha_modificacion: Date;
-    @ApiProperty({ default: true })
-    readonly Activo: boolean;
+    readonly Codigo: string;
     @ApiProperty()
-    readonly Retencion_id: number;
+    readonly Nombre: string;
     @ApiProperty()
-    readonly Base_retencion: number;
-    @ApiProperty({ required: false })
-    readonly Codigo_contable: string
-    @ApiProperty({ required: false, default: true })
-    readonly Informativo: boolean
+    readonly Valor: number;
 }

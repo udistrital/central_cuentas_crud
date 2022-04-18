@@ -1,8 +1,8 @@
 import { Prop, raw, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { ImputacionPresupuestal,ImputacionPresupuestalSchema } from './imputacion-presupuestal.schema';
-import { MovimientoContable,MovimientoContableSchema } from './movimiento-contable.schema';
-import { EstadoOrdenSchema, EstadoOrden } from './estados-orden.schema';
+import { MovimientoContable, MovimientoContableSchema } from './movimiento-contable.schema';
+import { ImpuestosRetenciones, ImpuestosRetencionesSchema } from './impuestos-retenciones.schema';
 
 @Schema( { collection: 'orden_pago' } )
 export class OrdenPago extends Document { // OrdenPago
@@ -18,37 +18,61 @@ export class OrdenPago extends Document { // OrdenPago
     Activo: boolean
 
     @Prop()
-    Numero: number;
+    AreaFuncional: number;
 
     @Prop()
-    Solicitante_id: number;
+    Consecutivo: string;
 
     @Prop()
-    Beneficiario_id: number;
-
-    @Prop()
-    Tipo_compromiso_id: number;
-
-    @Prop()
-    Numero_compromiso: number;
+    SolicitudGiro: string;
 
     @Prop()
     Vigencia: number;
 
     @Prop()
-    Area_funcional: string;
+    DocumentoBeneficiario: string;
 
     @Prop()
-    Concepto_id: string;
+    NombreBeneficiario: string;
 
-    @Prop( { type: EstadoOrdenSchema } )
-    Estados: EstadoOrden;
+    @Prop()
+    Compromiso: number;
+
+    @Prop()
+    NumeroCompromiso: number;
+
+    @Prop()
+    Supervisor: string;
+
+    @Prop()
+    Detalle: string;
+
+    @Prop()
+    TipoConvenio: string;
+
+    @Prop()
+    Convenio: string;
+
+    @Prop()
+    TipoOrdenPago: number;
+
+    @Prop()
+    ActaRecibido: string;
 
     @Prop( { type: [{ type: ImputacionPresupuestalSchema, ref: 'ImputacionPresupuestal' }] } )
-    Imputacion_presupuestal: ImputacionPresupuestal[];
+    ImputacionPresupuestal: ImputacionPresupuestal[];
 
-    @Prop( { type: [{ type: MovimientoContableSchema, ref: 'MovimientoContable' }] } )
-    Movimiento_contable: MovimientoContable[];
+    @Prop()
+    Concepto: string;
+
+    @Prop( { type: [{ type: ImpuestosRetencionesSchema, ref: 'ImpuestosRetenciones' }] } )
+    ImpuestosRetenciones: ImpuestosRetenciones[];
+
+    @Prop()
+    CuentaValorNeto: string;
+
+    @Prop( {type: [{ type: MovimientoContableSchema, ref: 'MovimientoContable'}]})
+    MovimientoContable: MovimientoContable[];
 }
 
 export const OrdenPagoSchema = SchemaFactory.createForClass(OrdenPago);
