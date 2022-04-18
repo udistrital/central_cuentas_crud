@@ -1,1 +1,850 @@
-{"openapi":"3.0.0","info":{"title":"central_cuentas_crud","description":"API CRUD para la gestion de ordenes de pago y relaciones de autorizacion.","version":"1.0","contact":{}},"tags":[],"servers":[],"components":{"schemas":{"ImputacionPresupuestalDto":{"type":"object","properties":{"Codigo":{"type":"string"},"Disponibilidad":{"type":"string"},"Nombre":{"type":"string"},"Registro":{"type":"number"},"Valor":{"type":"number"}},"required":["Codigo","Disponibilidad","Nombre","Registro","Valor"]},"ImpuestosRetencionesDto":{"type":"object","properties":{"Base":{"type":"number"},"Codigo":{"type":"string"},"Descuento":{"type":"string"},"Nombre":{"type":"string"},"Valor":{"type":"number"}},"required":["Base","Codigo","Descuento","Nombre","Valor"]},"MovimientoContableDto":{"type":"object","properties":{"Codigo":{"type":"string"},"Nombre":{"type":"string"},"Valor":{"type":"number"}},"required":["Codigo","Nombre","Valor"]},"OrdenPagoDto":{"type":"object","properties":{"Fecha_creacion":{"format":"date-time","type":"string"},"Fecha_modificacion":{"format":"date-time","type":"string","default":"2022-04-18T06:50:22.850Z"},"Activo":{"type":"boolean","default":true},"AreaFuncional":{"type":"number"},"Consecutivo":{"type":"string"},"SolicitudGiro":{"type":"string"},"Vigencia":{"type":"number"},"DocumentoBeneficiario":{"type":"string"},"NombreBeneficiario":{"type":"string"},"Compromiso":{"type":"number"},"NumeroCompromiso":{"type":"number"},"Supervisor":{"type":"string"},"Detalle":{"type":"string"},"TipoConvenio":{"type":"string"},"Convenio":{"type":"string"},"TipoOrdenPago":{"type":"number"},"ActaRecibido":{"type":"string"},"ImputacionPresupuestal":{"type":"array","items":{"$ref":"#/components/schemas/ImputacionPresupuestalDto"}},"Concepto":{"type":"string"},"ImpuestosRetenciones":{"type":"array","items":{"$ref":"#/components/schemas/ImpuestosRetencionesDto"}},"CuentaValorNeto":{"type":"string"},"MovimientoContable":{"type":"array","items":{"$ref":"#/components/schemas/MovimientoContableDto"}}},"required":["AreaFuncional","Consecutivo","SolicitudGiro","Vigencia","DocumentoBeneficiario","NombreBeneficiario","Compromiso","NumeroCompromiso","Supervisor","Detalle","TipoConvenio","Convenio","TipoOrdenPago","ActaRecibido","ImputacionPresupuestal","Concepto","ImpuestosRetenciones","CuentaValorNeto","MovimientoContable"]},"DocumentoDto":{"type":"object","properties":{"Coleccion":{"type":"string"},"Documento_id":{"type":"string"}},"required":["Coleccion","Documento_id"]},"EstadosDto":{"type":"object","properties":{"Fecha_creacion":{"format":"date-time","type":"string"},"Fecha_modificacion":{"format":"date-time","type":"string","default":"2022-04-18T06:50:23.053Z"},"Activo":{"type":"boolean","default":true},"Estado_id":{"type":"number"},"Descripcion":{"type":"string"},"Documento":{"$ref":"#/components/schemas/DocumentoDto"}},"required":["Estado_id","Documento"]},"DocumentoDTO":{"type":"object","properties":{"NombreDocumento":{"type":"string"},"NombreArchivo":{"type":"string"},"UID":{"type":"string"}},"required":["NombreDocumento","NombreArchivo","UID"]},"AutorizacionGiroDTO":{"type":"object","properties":{"Fecha_Creacion":{"format":"date-time","type":"string"},"Fecha_Modificacion":{"format":"date-time","type":"string","default":"2022-04-18T06:50:23.139Z"},"Activo":{"type":"boolean","default":true},"Numero_Solicitud":{"type":"number"},"Area_Funcional":{"type":"number"},"Concepto":{"type":"number"},"Documento_Solicitante":{"type":"string"},"Tipo_Doc_Beneficiario":{"type":"number"},"Documento_Beneficiario":{"type":"string"},"Nombre_Beneficiario":{"type":"string"},"Rubro":{"type":"string"},"Valor_Letras":{"type":"string"},"Valor_Numeros":{"type":"number"},"Estado":{"type":"string"},"Motivo_Rechazo":{"type":"string"},"Documentos":{"type":"array","items":{"$ref":"#/components/schemas/DocumentoDTO"}}},"required":["Numero_Solicitud","Area_Funcional","Concepto","Documento_Solicitante","Tipo_Doc_Beneficiario","Documento_Beneficiario","Nombre_Beneficiario","Rubro","Valor_Letras","Valor_Numeros","Estado","Motivo_Rechazo","Documentos"]}}},"paths":{"/":{"get":{"operationId":"AppController_getHello","parameters":[],"responses":{"200":{"description":""}}}},"/orden-pago":{"post":{"operationId":"OrdenPagoController_post","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/OrdenPagoDto"}}}},"responses":{"201":{"description":""}},"tags":["orden-pago"]},"get":{"operationId":"OrdenPagoController_get","parameters":[{"name":"query","required":false,"in":"query","description":"query - Filter. e.g. col1:v1,col2:v2 …","schema":{"type":"string"}},{"name":"fields","required":false,"in":"query","description":"fields - Fields returned. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"sortby","required":false,"in":"query","description":"sortby - Sorted-by fields. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"order","required":false,"in":"query","description":"order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …","schema":{"type":"string"}},{"name":"limit","required":false,"in":"query","description":"limit - Limit the size of result set. Must be an integer","schema":{"type":"string"}},{"name":"offset","required":false,"in":"query","description":"offset - Start position of result set. Must be an integer","schema":{"type":"string"}},{"name":"populate","required":false,"in":"query","description":"populate - show subqueries. Must be a boolean","schema":{"type":"string"}}],"responses":{"200":{"description":""}},"tags":["orden-pago"]}},"/orden-pago/{id}":{"get":{"operationId":"OrdenPagoController_getById","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}},"tags":["orden-pago"]},"put":{"operationId":"OrdenPagoController_put","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/OrdenPagoDto"}}}},"responses":{"200":{"description":""}},"tags":["orden-pago"]},"delete":{"operationId":"OrdenPagoController_delete","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}},"tags":["orden-pago"]}},"/estados":{"post":{"operationId":"EstadosController_post","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/EstadosDto"}}}},"responses":{"201":{"description":""}},"tags":["estados"]},"get":{"operationId":"EstadosController_get","parameters":[{"name":"query","required":false,"in":"query","description":"query - Filter. e.g. col1:v1,col2:v2 …","schema":{"type":"string"}},{"name":"fields","required":false,"in":"query","description":"fields - Fields returned. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"sortby","required":false,"in":"query","description":"sortby - Sorted-by fields. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"order","required":false,"in":"query","description":"order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …","schema":{"type":"string"}},{"name":"limit","required":false,"in":"query","description":"limit - Limit the size of result set. Must be an integer","schema":{"type":"string"}},{"name":"offset","required":false,"in":"query","description":"offset - Start position of result set. Must be an integer","schema":{"type":"string"}},{"name":"populate","required":false,"in":"query","description":"populate - show subqueries. Must be a boolean","schema":{"type":"string"}}],"responses":{"200":{"description":""}},"tags":["estados"]}},"/estados/{id}":{"put":{"operationId":"EstadosController_put","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/EstadosDto"}}}},"responses":{"200":{"description":""}},"tags":["estados"]},"delete":{"operationId":"EstadosController_delete","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}},"tags":["estados"]}},"/autorizacion-giro":{"post":{"operationId":"AutorizacionGiroController_post","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/AutorizacionGiroDTO"}}}},"responses":{"201":{"description":""}},"tags":["autorizacion-giro"]},"get":{"operationId":"AutorizacionGiroController_getAll","parameters":[{"name":"query","required":false,"in":"query","description":"query - Filter. e.g. col1:v1,col2:v2 …","schema":{"type":"string"}},{"name":"fields","required":false,"in":"query","description":"fields - Fields returned. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"sortby","required":false,"in":"query","description":"sortby - Sorted-by fields. e.g. col1,col2 …","schema":{"type":"string"}},{"name":"order","required":false,"in":"query","description":"order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …","schema":{"type":"string"}},{"name":"limit","required":false,"in":"query","description":"limit - Limit the size of result set. Must be an integer","schema":{"type":"string"}},{"name":"offset","required":false,"in":"query","description":"offset - Start position of result set. Must be an integer","schema":{"type":"string"}},{"name":"populate","required":false,"in":"query","description":"populate - show subqueries. Must be a boolean","schema":{"type":"string"}}],"responses":{"200":{"description":""}},"tags":["autorizacion-giro"]}},"/autorizacion-giro/{id}":{"get":{"operationId":"AutorizacionGiroController_getById","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}},"tags":["autorizacion-giro"]},"put":{"operationId":"AutorizacionGiroController_put","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/AutorizacionGiroDTO"}}}},"responses":{"200":{"description":""}},"tags":["autorizacion-giro"]},"delete":{"operationId":"AutorizacionGiroController_delete","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""}},"tags":["autorizacion-giro"]}}}}
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "central_cuentas_crud",
+    "description": "API CRUD para la gestion de ordenes de pago y relaciones de autorizacion.",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "ImputacionPresupuestalDto": {
+        "type": "object",
+        "properties": {
+          "Codigo": {
+            "type": "string"
+          },
+          "Disponibilidad": {
+            "type": "string"
+          },
+          "Nombre": {
+            "type": "string"
+          },
+          "Registro": {
+            "type": "number"
+          },
+          "Valor": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "Codigo",
+          "Disponibilidad",
+          "Nombre",
+          "Registro",
+          "Valor"
+        ]
+      },
+      "ImpuestosRetencionesDto": {
+        "type": "object",
+        "properties": {
+          "Base": {
+            "type": "number"
+          },
+          "Codigo": {
+            "type": "string"
+          },
+          "Descuento": {
+            "type": "string"
+          },
+          "Nombre": {
+            "type": "string"
+          },
+          "Valor": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "Base",
+          "Codigo",
+          "Descuento",
+          "Nombre",
+          "Valor"
+        ]
+      },
+      "MovimientoContableDto": {
+        "type": "object",
+        "properties": {
+          "Codigo": {
+            "type": "string"
+          },
+          "Nombre": {
+            "type": "string"
+          },
+          "Valor": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "Codigo",
+          "Nombre",
+          "Valor"
+        ]
+      },
+      "OrdenPagoDto": {
+        "type": "object",
+        "properties": {
+          "Fecha_creacion": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "Fecha_modificacion": {
+            "format": "date-time",
+            "type": "string",
+            "default": "2022-04-18T07:03:57.196Z"
+          },
+          "Activo": {
+            "type": "boolean",
+            "default": true
+          },
+          "AreaFuncional": {
+            "type": "number"
+          },
+          "Consecutivo": {
+            "type": "string"
+          },
+          "SolicitudGiro": {
+            "type": "string"
+          },
+          "Vigencia": {
+            "type": "number"
+          },
+          "DocumentoBeneficiario": {
+            "type": "string"
+          },
+          "NombreBeneficiario": {
+            "type": "string"
+          },
+          "Compromiso": {
+            "type": "number"
+          },
+          "NumeroCompromiso": {
+            "type": "number"
+          },
+          "Supervisor": {
+            "type": "string"
+          },
+          "Detalle": {
+            "type": "string"
+          },
+          "TipoConvenio": {
+            "type": "string"
+          },
+          "Convenio": {
+            "type": "string"
+          },
+          "TipoOrdenPago": {
+            "type": "number"
+          },
+          "ActaRecibido": {
+            "type": "string"
+          },
+          "ImputacionPresupuestal": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ImputacionPresupuestalDto"
+            }
+          },
+          "Concepto": {
+            "type": "string"
+          },
+          "ImpuestosRetenciones": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ImpuestosRetencionesDto"
+            }
+          },
+          "CuentaValorNeto": {
+            "type": "string"
+          },
+          "MovimientoContable": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MovimientoContableDto"
+            }
+          }
+        },
+        "required": [
+          "AreaFuncional",
+          "Consecutivo",
+          "SolicitudGiro",
+          "Vigencia",
+          "DocumentoBeneficiario",
+          "NombreBeneficiario",
+          "Compromiso",
+          "NumeroCompromiso",
+          "Supervisor",
+          "Detalle",
+          "TipoConvenio",
+          "Convenio",
+          "TipoOrdenPago",
+          "ActaRecibido",
+          "ImputacionPresupuestal",
+          "Concepto",
+          "ImpuestosRetenciones",
+          "CuentaValorNeto",
+          "MovimientoContable"
+        ]
+      },
+      "DocumentoDto": {
+        "type": "object",
+        "properties": {
+          "Coleccion": {
+            "type": "string"
+          },
+          "Documento_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "Coleccion",
+          "Documento_id"
+        ]
+      },
+      "EstadosDto": {
+        "type": "object",
+        "properties": {
+          "Fecha_creacion": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "Fecha_modificacion": {
+            "format": "date-time",
+            "type": "string",
+            "default": "2022-04-18T07:03:57.381Z"
+          },
+          "Activo": {
+            "type": "boolean",
+            "default": true
+          },
+          "Estado_id": {
+            "type": "number"
+          },
+          "Descripcion": {
+            "type": "string"
+          },
+          "Documento": {
+            "$ref": "#/components/schemas/DocumentoDto"
+          }
+        },
+        "required": [
+          "Estado_id",
+          "Documento"
+        ]
+      },
+      "DocumentoDTO": {
+        "type": "object",
+        "properties": {
+          "NombreDocumento": {
+            "type": "string"
+          },
+          "NombreArchivo": {
+            "type": "string"
+          },
+          "UID": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "NombreDocumento",
+          "NombreArchivo",
+          "UID"
+        ]
+      },
+      "AutorizacionGiroDTO": {
+        "type": "object",
+        "properties": {
+          "Fecha_Creacion": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "Fecha_Modificacion": {
+            "format": "date-time",
+            "type": "string",
+            "default": "2022-04-18T07:03:57.471Z"
+          },
+          "Activo": {
+            "type": "boolean",
+            "default": true
+          },
+          "Numero_Solicitud": {
+            "type": "number"
+          },
+          "Area_Funcional": {
+            "type": "number"
+          },
+          "Concepto": {
+            "type": "number"
+          },
+          "Documento_Solicitante": {
+            "type": "string"
+          },
+          "Tipo_Doc_Beneficiario": {
+            "type": "number"
+          },
+          "Documento_Beneficiario": {
+            "type": "string"
+          },
+          "Nombre_Beneficiario": {
+            "type": "string"
+          },
+          "Rubro": {
+            "type": "string"
+          },
+          "Valor_Letras": {
+            "type": "string"
+          },
+          "Valor_Numeros": {
+            "type": "number"
+          },
+          "Estado": {
+            "type": "string"
+          },
+          "Motivo_Rechazo": {
+            "type": "string"
+          },
+          "Documentos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DocumentoDTO"
+            }
+          }
+        },
+        "required": [
+          "Numero_Solicitud",
+          "Area_Funcional",
+          "Concepto",
+          "Documento_Solicitante",
+          "Tipo_Doc_Beneficiario",
+          "Documento_Beneficiario",
+          "Nombre_Beneficiario",
+          "Rubro",
+          "Valor_Letras",
+          "Valor_Numeros",
+          "Estado",
+          "Motivo_Rechazo",
+          "Documentos"
+        ]
+      }
+    }
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "AppController_getHello",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/orden-pago": {
+      "post": {
+        "operationId": "OrdenPagoController_post",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrdenPagoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "orden-pago"
+        ]
+      },
+      "get": {
+        "operationId": "OrdenPagoController_get",
+        "parameters": [
+          {
+            "name": "query",
+            "required": false,
+            "in": "query",
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortby",
+            "required": false,
+            "in": "query",
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order",
+            "required": false,
+            "in": "query",
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "description": "offset - Start position of result set. Must be an integer",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "populate",
+            "required": false,
+            "in": "query",
+            "description": "populate - show subqueries. Must be a boolean",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "orden-pago"
+        ]
+      }
+    },
+    "/orden-pago/{id}": {
+      "get": {
+        "operationId": "OrdenPagoController_getById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "orden-pago"
+        ]
+      },
+      "put": {
+        "operationId": "OrdenPagoController_put",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrdenPagoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "orden-pago"
+        ]
+      },
+      "delete": {
+        "operationId": "OrdenPagoController_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "orden-pago"
+        ]
+      }
+    },
+    "/estados": {
+      "post": {
+        "operationId": "EstadosController_post",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EstadosDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "estados"
+        ]
+      },
+      "get": {
+        "operationId": "EstadosController_get",
+        "parameters": [
+          {
+            "name": "query",
+            "required": false,
+            "in": "query",
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortby",
+            "required": false,
+            "in": "query",
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order",
+            "required": false,
+            "in": "query",
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "description": "offset - Start position of result set. Must be an integer",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "populate",
+            "required": false,
+            "in": "query",
+            "description": "populate - show subqueries. Must be a boolean",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "estados"
+        ]
+      }
+    },
+    "/estados/{id}": {
+      "put": {
+        "operationId": "EstadosController_put",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EstadosDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "estados"
+        ]
+      },
+      "delete": {
+        "operationId": "EstadosController_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "estados"
+        ]
+      }
+    },
+    "/autorizacion-giro": {
+      "post": {
+        "operationId": "AutorizacionGiroController_post",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutorizacionGiroDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "autorizacion-giro"
+        ]
+      },
+      "get": {
+        "operationId": "AutorizacionGiroController_getAll",
+        "parameters": [
+          {
+            "name": "query",
+            "required": false,
+            "in": "query",
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortby",
+            "required": false,
+            "in": "query",
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order",
+            "required": false,
+            "in": "query",
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "description": "offset - Start position of result set. Must be an integer",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "populate",
+            "required": false,
+            "in": "query",
+            "description": "populate - show subqueries. Must be a boolean",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "autorizacion-giro"
+        ]
+      }
+    },
+    "/autorizacion-giro/{id}": {
+      "get": {
+        "operationId": "AutorizacionGiroController_getById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "autorizacion-giro"
+        ]
+      },
+      "put": {
+        "operationId": "AutorizacionGiroController_put",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutorizacionGiroDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "autorizacion-giro"
+        ]
+      },
+      "delete": {
+        "operationId": "AutorizacionGiroController_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "autorizacion-giro"
+        ]
+      }
+    }
+  }
+}

@@ -13,7 +13,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, options);
-  fs.writeFileSync("./swagger.json", JSON.stringify(document));
+  fs.writeFileSync("./swagger.json", JSON.stringify(document, null, 2));
   SwaggerModule.setup('swagger', app, document);
   
   await app.listen( parseInt(environment.PORT,10) || 3000);
