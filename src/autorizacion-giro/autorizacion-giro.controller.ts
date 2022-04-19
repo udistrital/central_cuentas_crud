@@ -31,7 +31,7 @@ export class AutorizacionGiroController {
             Status: "200",
             Success: true
         });
-  }
+    }
 
     @Put(':id')
     put(@Param('id') id: string, @Body() autorizacionGiroDTO: AutorizacionGiroDTO){

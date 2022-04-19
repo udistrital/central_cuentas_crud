@@ -1,46 +1,51 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { ImputacionPresupuestalDto } from './imputacion-presupuestal.dto';
-import { MovimientoContableDto } from './movimiento-contable.dto'
-import { EstadosOrdenDto } from './estados-orden.dto';
+import { MovimientoContableDto } from './movimiento-contable.dto';
+import { ImpuestosRetencionesDto } from './impuestos-retenciones.dto';
 
 export class OrdenPagoDto {
   @ApiProperty({ required: false })
   readonly Fecha_creacion: Date;
-
   @ApiProperty({ required: false, default: new Date() })
   Fecha_modificacion: Date;
-
   @ApiProperty({ required: false, default: true })
   readonly Activo: boolean;
   @ApiProperty()
-  readonly Numero: number;
+  readonly AreaFuncional: number;
   @ApiProperty()
-  readonly Solicitante_id: number;
+  readonly Consecutivo: string;
   @ApiProperty()
-  readonly Beneficiario_id: number;
-  @ApiProperty()
-  readonly Tipo_compromiso_id: number;
-  @ApiProperty()
-  readonly Numero_compromiso: number;
+  readonly SolicitudGiro: string;
   @ApiProperty()
   readonly Vigencia: number;
   @ApiProperty()
-  readonly Area_funcional: string;
+  readonly DocumentoBeneficiario: string;
   @ApiProperty()
-  readonly Concepto_id: string;
-  @ApiProperty({
-    type: EstadosOrdenDto, required: true,
-    default: {
-      Fecha_creacion: new Date(),
-      Fecha_modificacion: new Date(),
-      Activo: true,
-      Nombre: 'Elaborada',
-      Estado_id: 317
-    }
-  })
-  readonly Estados: EstadosOrdenDto;
+  readonly NombreBeneficiario: string;
+  @ApiProperty()
+  readonly Compromiso: number;
+  @ApiProperty()
+  readonly NumeroCompromiso: number;
+  @ApiProperty()
+  readonly Supervisor: string;
+  @ApiProperty()
+  readonly Detalle: string;
+  @ApiProperty()
+  readonly TipoConvenio: string;
+  @ApiProperty()
+  readonly Convenio: string;
+  @ApiProperty()
+  readonly TipoOrdenPago: number;
+  @ApiProperty()
+  readonly ActaRecibido: string;
   @ApiProperty({ type: ImputacionPresupuestalDto, isArray: true })
-  readonly Imputacion_presupuestal: ImputacionPresupuestalDto[];
+  readonly ImputacionPresupuestal: ImputacionPresupuestalDto[];
+  @ApiProperty()
+  readonly Concepto: string;
+  @ApiProperty({ type: ImpuestosRetencionesDto, isArray: true })
+  readonly ImpuestosRetenciones: ImpuestosRetencionesDto[];
+  @ApiProperty()
+  readonly CuentaValorNeto: string;
   @ApiProperty({ type: MovimientoContableDto, isArray: true })
-  readonly Movimiento_contable: MovimientoContableDto[];
+  readonly MovimientoContable: MovimientoContableDto[];
 }
