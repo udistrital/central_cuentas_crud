@@ -93,7 +93,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-04-19T05:44:39.154Z"
+            "default": "2022-04-19T07:32:08.539Z"
           },
           "Activo": {
             "type": "boolean",
@@ -213,7 +213,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-04-19T05:44:39.381Z"
+            "default": "2022-04-19T07:32:08.720Z"
           },
           "Activo": {
             "type": "boolean",
@@ -263,7 +263,7 @@
           "Fecha_Modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-04-19T05:44:39.496Z"
+            "default": "2022-04-19T07:32:08.827Z"
           },
           "Activo": {
             "type": "boolean",
@@ -276,7 +276,7 @@
             "type": "number"
           },
           "Concepto": {
-            "type": "number"
+            "type": "string"
           },
           "Documento_Solicitante": {
             "type": "string"

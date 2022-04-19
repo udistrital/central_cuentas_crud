@@ -20,7 +20,7 @@ export class AutorizacionGiro extends Document {
     Area_Funcional: number;
 
     @Prop()
-    Concepto: number;
+    Concepto: string;
 
     @Prop()
     Documento_Solicitante: string;
