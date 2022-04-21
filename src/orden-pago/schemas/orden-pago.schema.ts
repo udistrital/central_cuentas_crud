@@ -59,6 +59,18 @@ export class OrdenPago extends Document { // OrdenPago
     @Prop()
     ActaRecibido: string;
 
+    @Prop()
+    Endoso: boolean;
+
+    @Prop()
+    BeneficiarioEndoso: string;
+
+    @Prop()
+    ValorEndoso: number;
+
+    @Prop()
+    CuentaEndoso: string;
+
     @Prop( { type: [{ type: ImputacionPresupuestalSchema, ref: 'ImputacionPresupuestal' }] } )
     ImputacionPresupuestal: ImputacionPresupuestal[];
 
