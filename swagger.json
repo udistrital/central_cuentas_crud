@@ -93,7 +93,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-04-19T07:32:08.539Z"
+            "default": "2022-04-21T06:49:52.683Z"
           },
           "Activo": {
             "type": "boolean",
@@ -141,6 +141,18 @@
           "ActaRecibido": {
             "type": "string"
           },
+          "Endoso": {
+            "type": "boolean"
+          },
+          "BeneficiarioEndoso": {
+            "type": "string"
+          },
+          "ValorEndoso": {
+            "type": "number"
+          },
+          "CuentaEndoso": {
+            "type": "string"
+          },
           "ImputacionPresupuestal": {
             "type": "array",
             "items": {
@@ -181,6 +193,10 @@
           "Convenio",
           "TipoOrdenPago",
           "ActaRecibido",
+          "Endoso",
+          "BeneficiarioEndoso",
+          "ValorEndoso",
+          "CuentaEndoso",
           "ImputacionPresupuestal",
           "Concepto",
           "ImpuestosRetenciones",
@@ -213,7 +229,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-04-19T07:32:08.720Z"
+            "default": "2022-04-21T06:49:52.863Z"
           },
           "Activo": {
             "type": "boolean",
@@ -263,7 +279,7 @@
           "Fecha_Modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-04-19T07:32:08.827Z"
+            "default": "2022-04-21T06:49:52.967Z"
           },
           "Activo": {
             "type": "boolean",
