@@ -75,12 +75,16 @@
           },
           "Valor": {
             "type": "number"
+          },
+          "Naturaleza": {
+            "type": "string"
           }
         },
         "required": [
           "Codigo",
           "Nombre",
-          "Valor"
+          "Valor",
+          "Naturaleza"
         ]
       },
       "OrdenPagoDto": {
@@ -93,7 +97,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-04-21T07:05:20.798Z"
+            "default": "2022-05-02T06:41:11.160Z"
           },
           "Activo": {
             "type": "boolean",
@@ -229,7 +233,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-04-21T07:05:21.038Z"
+            "default": "2022-05-02T06:41:11.408Z"
           },
           "Activo": {
             "type": "boolean",
@@ -279,7 +283,7 @@
           "Fecha_Modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-04-21T07:05:21.145Z"
+            "default": "2022-05-02T06:41:11.533Z"
           },
           "Activo": {
             "type": "boolean",

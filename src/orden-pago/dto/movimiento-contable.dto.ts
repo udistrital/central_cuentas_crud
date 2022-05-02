@@ -8,4 +8,6 @@ export class MovimientoContableDto {
     readonly Nombre: string;
     @ApiProperty()
     readonly Valor: number;
+    @ApiProperty()
+    readonly Naturaleza: string;
 }

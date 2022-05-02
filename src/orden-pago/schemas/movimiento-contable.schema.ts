@@ -12,6 +12,9 @@ export class MovimientoContable extends Document {
 
     @Prop()
     Valor: number;
+
+    @Prop()
+    Naturaleza: string;
 };
 
 export const MovimientoContableSchema = SchemaFactory.createForClass(MovimientoContable);
