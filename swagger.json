@@ -97,7 +97,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-05-03T05:11:52.484Z"
+            "default": "2022-05-04T04:46:41.391Z"
           },
           "Activo": {
             "type": "boolean",
@@ -157,6 +157,9 @@
           "CuentaEndoso": {
             "type": "string"
           },
+          "Estado": {
+            "type": "string"
+          },
           "ImputacionPresupuestal": {
             "type": "array",
             "items": {
@@ -201,6 +204,7 @@
           "BeneficiarioEndoso",
           "ValorEndoso",
           "CuentaEndoso",
+          "Estado",
           "ImputacionPresupuestal",
           "Concepto",
           "ImpuestosRetenciones",
@@ -233,7 +237,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-05-03T05:11:52.798Z"
+            "default": "2022-05-04T04:46:41.612Z"
           },
           "Activo": {
             "type": "boolean",
@@ -283,7 +287,7 @@
           "Fecha_Modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-05-03T05:11:52.979Z"
+            "default": "2022-05-04T04:46:41.710Z"
           },
           "Activo": {
             "type": "boolean",
