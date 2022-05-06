@@ -47,6 +47,8 @@ export class OrdenPagoDto {
   @ApiProperty()
   readonly CuentaEndoso: string;
   @ApiProperty()
+  readonly ValorOP: number;
+  @ApiProperty()
   readonly Estado: string;
   @ApiProperty({ type: ImputacionPresupuestalDto, isArray: true })
   readonly ImputacionPresupuestal: ImputacionPresupuestalDto[];
