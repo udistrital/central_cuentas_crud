@@ -9,10 +9,12 @@ import { FilterDto } from '../shared/dto/filter.dto';
 export class DevolucionTributariaController {
 
     constructor(private readonly devolucionTributariaService: DevolucionTributariaService) { }
+
     @Post()
     post(@Body() devolucionTributariaDto: DevolucionTributariaDto) {
         return this.devolucionTributariaService.post(devolucionTributariaDto);
     }
+
     @Get()
     get(@Query() filterDto: FilterDto) {
         return this.devolucionTributariaService.getAll(filterDto)
@@ -29,10 +31,12 @@ export class DevolucionTributariaController {
             Success: true
         });
     }
+
     @Put('/:id')
     put(@Param('id') id: string, @Body() devolucionTributariaDto: DevolucionTributariaDto) {
         return this.devolucionTributariaService.put(id, devolucionTributariaDto)
     }
+
     @Delete('/:id')
     delete(@Param('id') id: string) {
         return this.devolucionTributariaService.delete(id)
