@@ -8,6 +8,7 @@ import { OrdenPagoModule } from './orden-pago/orden-pago.module';
 import { FiltersService } from './shared/filters/filters.service';
 import { EstadosModule } from './estados/estados.module';
 import { AutorizacionGiroModule } from './autorizacion-giro/autorizacion-giro.module';
+import { DevolucionTributariaModule } from './devolucion-tributaria/devolucion-tributaria.module';
 
 
 
@@ -19,7 +20,8 @@ import { AutorizacionGiroModule } from './autorizacion-giro/autorizacion-giro.mo
     { useFindAndModify: false }),
     OrdenPagoModule,
     EstadosModule,
-    AutorizacionGiroModule
+    AutorizacionGiroModule,
+    DevolucionTributariaModule,
   ],
   controllers: [AppController],
   providers: [AppService, FiltersService],
