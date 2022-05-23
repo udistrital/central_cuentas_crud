@@ -97,7 +97,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-05-06T20:00:46.451Z"
+            "default": "2022-05-23T14:44:07.724Z"
           },
           "Activo": {
             "type": "boolean",
@@ -241,7 +241,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-05-06T20:00:46.712Z"
+            "default": "2022-05-23T14:44:07.983Z"
           },
           "Activo": {
             "type": "boolean",
@@ -291,7 +291,7 @@
           "Fecha_Modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-05-06T20:00:46.852Z"
+            "default": "2022-05-23T14:44:08.111Z"
           },
           "Activo": {
             "type": "boolean",
@@ -354,6 +354,100 @@
           "Estado",
           "Motivo_Rechazo",
           "Documentos"
+        ]
+      },
+      "OrdenesPagoDto": {
+        "type": "object",
+        "properties": {
+          "Consecutivo": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "Consecutivo"
+        ]
+      },
+      "DevolucionTributariaDto": {
+        "type": "object",
+        "properties": {
+          "Fecha_creacion": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "Fecha_modificacion": {
+            "format": "date-time",
+            "type": "string",
+            "default": "2022-05-23T14:44:08.199Z"
+          },
+          "Activo": {
+            "type": "boolean",
+            "default": true
+          },
+          "AreaFuncional": {
+            "type": "number"
+          },
+          "Consecutivo": {
+            "type": "string"
+          },
+          "NumeroRequerimiento": {
+            "type": "number"
+          },
+          "FechaSolicitud": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "DocumentoBeneficiario": {
+            "type": "string"
+          },
+          "NombreBeneficiario": {
+            "type": "string"
+          },
+          "Concepto": {
+            "type": "string"
+          },
+          "RazonDevolucion": {
+            "type": "string"
+          },
+          "TipoComprobante": {
+            "type": "string"
+          },
+          "NumeroComprobante": {
+            "type": "string"
+          },
+          "ValorDevolucion": {
+            "type": "number"
+          },
+          "Estado": {
+            "type": "string"
+          },
+          "OrdenesPago": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrdenesPagoDto"
+            }
+          },
+          "MovimientoContable": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MovimientoContableDto"
+            }
+          }
+        },
+        "required": [
+          "AreaFuncional",
+          "Consecutivo",
+          "NumeroRequerimiento",
+          "FechaSolicitud",
+          "DocumentoBeneficiario",
+          "NombreBeneficiario",
+          "Concepto",
+          "RazonDevolucion",
+          "TipoComprobante",
+          "NumeroComprobante",
+          "ValorDevolucion",
+          "Estado",
+          "OrdenesPago",
+          "MovimientoContable"
         ]
       }
     }
@@ -871,6 +965,181 @@
         },
         "tags": [
           "autorizacion-giro"
+        ]
+      }
+    },
+    "/devolucion-tributaria": {
+      "post": {
+        "operationId": "DevolucionTributariaController_post",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DevolucionTributariaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "devolucion-tributaria"
+        ]
+      },
+      "get": {
+        "operationId": "DevolucionTributariaController_get",
+        "parameters": [
+          {
+            "name": "query",
+            "required": false,
+            "in": "query",
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortby",
+            "required": false,
+            "in": "query",
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order",
+            "required": false,
+            "in": "query",
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "description": "offset - Start position of result set. Must be an integer",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "populate",
+            "required": false,
+            "in": "query",
+            "description": "populate - show subqueries. Must be a boolean",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "devolucion-tributaria"
+        ]
+      }
+    },
+    "/devolucion-tributaria/{id}": {
+      "get": {
+        "operationId": "DevolucionTributariaController_getById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "devolucion-tributaria"
+        ]
+      },
+      "put": {
+        "operationId": "DevolucionTributariaController_put",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DevolucionTributariaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "devolucion-tributaria"
+        ]
+      },
+      "delete": {
+        "operationId": "DevolucionTributariaController_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "devolucion-tributaria"
         ]
       }
     }
