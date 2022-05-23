@@ -97,7 +97,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-05-20T20:39:37.135Z"
+            "default": "2022-05-23T14:44:07.724Z"
           },
           "Activo": {
             "type": "boolean",
@@ -241,7 +241,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-05-20T20:39:37.317Z"
+            "default": "2022-05-23T14:44:07.983Z"
           },
           "Activo": {
             "type": "boolean",
@@ -291,7 +291,7 @@
           "Fecha_Modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-05-20T20:39:37.403Z"
+            "default": "2022-05-23T14:44:08.111Z"
           },
           "Activo": {
             "type": "boolean",
@@ -377,7 +377,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-05-20T20:39:37.446Z"
+            "default": "2022-05-23T14:44:08.199Z"
           },
           "Activo": {
             "type": "boolean",
