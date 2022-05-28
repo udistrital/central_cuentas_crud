@@ -13,7 +13,6 @@ export class AutorizacionGiroController {
 
     @Post()
     post(@Body() autorizacionGiroDTO: AutorizacionGiroDTO) {
-        console.log(autorizacionGiroDTO)
         return this.autorizacionGiroServive.post(autorizacionGiroDTO);
     }
     @Get()

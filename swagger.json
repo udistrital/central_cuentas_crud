@@ -97,7 +97,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-05-23T15:59:12.657Z"
+            "default": "2022-05-28T05:54:47.813Z"
           },
           "Activo": {
             "type": "boolean",
@@ -241,7 +241,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-05-23T15:59:12.889Z"
+            "default": "2022-05-28T05:54:47.837Z"
           },
           "Activo": {
             "type": "boolean",
@@ -291,7 +291,7 @@
           "Fecha_Modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-05-23T15:59:12.988Z"
+            "default": "2022-05-28T05:54:47.844Z"
           },
           "Activo": {
             "type": "boolean",
@@ -360,11 +360,56 @@
         "type": "object",
         "properties": {
           "Consecutivo": {
-            "type": "number"
+            "type": "string"
           }
         },
         "required": [
           "Consecutivo"
+        ]
+      },
+      "MovimientoContableDevTriDto": {
+        "type": "object",
+        "properties": {
+          "Secuencia": {
+            "type": "number"
+          },
+          "Codigo": {
+            "type": "string"
+          },
+          "Nombre": {
+            "type": "string"
+          },
+          "PorcentajeRetencion": {
+            "type": "number"
+          },
+          "BaseRetencion": {
+            "type": "number"
+          },
+          "Naturaleza": {
+            "type": "string"
+          },
+          "Credito": {
+            "type": "number",
+            "default": 0
+          },
+          "Debito": {
+            "type": "number",
+            "default": 0
+          },
+          "Tercero": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "Secuencia",
+          "Codigo",
+          "Nombre",
+          "PorcentajeRetencion",
+          "BaseRetencion",
+          "Naturaleza",
+          "Credito",
+          "Debito",
+          "Tercero"
         ]
       },
       "DevolucionTributariaDto": {
@@ -377,7 +422,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-05-23T15:59:13.089Z"
+            "default": "2022-05-28T05:54:47.848Z"
           },
           "Activo": {
             "type": "boolean",
@@ -429,7 +474,7 @@
           "MovimientoContable": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/MovimientoContableDto"
+              "$ref": "#/components/schemas/MovimientoContableDevTriDto"
             }
           }
         },

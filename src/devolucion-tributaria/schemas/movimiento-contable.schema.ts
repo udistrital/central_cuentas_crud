@@ -2,7 +2,10 @@ import { Prop, raw, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 @Schema( { collection: 'movimiento_contable'})
-export class MovimientoContable extends Document {// Movimiento contable
+export class MovimientoContableDevTri extends Document {// Movimiento contable
+    @Prop()
+    Secuencia: number
+
     @Prop()
     Codigo: string
 
@@ -17,6 +20,15 @@ export class MovimientoContable extends Document {// Movimiento contable
 
     @Prop()
     Naturaleza: string
+
+    @Prop({default: 0})
+    Credito: number
+
+    @Prop({default: 0})
+    Debito: number
+
+    @Prop()
+    Tercero: string
 }
 
-export const MovimientoContableSchema = SchemaFactory.createForClass(MovimientoContable);
+export const MovimientoContableDevTriSchema = SchemaFactory.createForClass(MovimientoContableDevTri);

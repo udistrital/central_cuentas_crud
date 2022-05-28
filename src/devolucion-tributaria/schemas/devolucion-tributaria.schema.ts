@@ -1,6 +1,6 @@
 import { Prop, raw, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { MovimientoContable, MovimientoContableSchema } from './movimiento-contable.schema';
+import { MovimientoContableDevTri, MovimientoContableDevTriSchema } from './movimiento-contable.schema';
 import { OrdenesPago, OrdenesPagoSchema } from './ordenes-pago.schema';
 
 @Schema( { collection: 'devolucion_tributaria' } )
@@ -55,8 +55,8 @@ export class DevolucionTributaria extends Document { // Devolucion Tributaria
     @Prop( { type: [{ type: OrdenesPagoSchema, ref: 'OrdenesPago' }] } )
     OrdenesPago: OrdenesPago[];
 
-    @Prop( {type: [{ type: MovimientoContableSchema, ref: 'MovimientoContable'}]})
-    MovimientoContable: MovimientoContable[];
+    @Prop( {type: [{ type: MovimientoContableDevTriSchema, ref: 'MovimientoContableDevTri'}]})
+    MovimientoContable: MovimientoContableDevTri[];
 }
 
 export const DevolucionTributariaSchema = SchemaFactory.createForClass(DevolucionTributaria);

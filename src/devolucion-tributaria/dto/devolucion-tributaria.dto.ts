@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { MovimientoContableDto } from './movimiento-contable.dto';
+import { MovimientoContableDevTriDto } from './movimiento-contable.dto';
 import { OrdenesPagoDto } from './ordenes-pago.dto';
 
 export class DevolucionTributariaDto {
@@ -35,6 +35,6 @@ export class DevolucionTributariaDto {
   readonly Estado: string;
   @ApiProperty({ type: OrdenesPagoDto, isArray: true })
   readonly OrdenesPago: OrdenesPagoDto[];
-  @ApiProperty({ type: MovimientoContableDto, isArray: true })
-  readonly MovimientoContable: MovimientoContableDto[];
+  @ApiProperty({ type: MovimientoContableDevTriDto, isArray: true })
+  readonly MovimientoContable: MovimientoContableDevTriDto[];
 }
