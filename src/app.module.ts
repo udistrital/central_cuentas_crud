@@ -9,6 +9,7 @@ import { FiltersService } from './shared/filters/filters.service';
 import { EstadosModule } from './estados/estados.module';
 import { AutorizacionGiroModule } from './autorizacion-giro/autorizacion-giro.module';
 import { DevolucionTributariaModule } from './devolucion-tributaria/devolucion-tributaria.module';
+import { OrdenDevolucionModule } from './orden-devolucion/orden-devolucion.module';
 
 
 
@@ -22,6 +23,7 @@ import { DevolucionTributariaModule } from './devolucion-tributaria/devolucion-t
     EstadosModule,
     AutorizacionGiroModule,
     DevolucionTributariaModule,
+    OrdenDevolucionModule,
   ],
   controllers: [AppController],
   providers: [AppService, FiltersService],
