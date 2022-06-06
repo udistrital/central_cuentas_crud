@@ -4,9 +4,9 @@ API CRUD para la gestion de ordenes de pago y relaciones de autorizacion.
 
 ## Estado CI
 
-| Develop | Release 0.12.0 | Master |
+| Develop | Release 0.13.0 | Master |
 | -- | -- | -- |
-| [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/central_cuentas_crud/status.svg?ref=refs/heads/develop)](https://hubci.portaloas.udistrital.edu.co/udistrital/central_cuentas_crud) | [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/central_cuentas_crud/status.svg?ref=refs/heads/release/0.12.0)](https://hubci.portaloas.udistrital.edu.co/udistrital/central_cuentas_crud) | [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/central_cuentas_crud/status.svg?ref=refs/heads/master)](https://hubci.portaloas.udistrital.edu.co/udistrital/central_cuentas_crud) |
+| [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/central_cuentas_crud/status.svg?ref=refs/heads/develop)](https://hubci.portaloas.udistrital.edu.co/udistrital/central_cuentas_crud) | [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/central_cuentas_crud/status.svg?ref=refs/heads/release/0.13.0)](https://hubci.portaloas.udistrital.edu.co/udistrital/central_cuentas_crud) | [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/central_cuentas_crud/status.svg?ref=refs/heads/master)](https://hubci.portaloas.udistrital.edu.co/udistrital/central_cuentas_crud) |
 
 ## Especificaciones Técnicas
 
