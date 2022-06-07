@@ -27,6 +27,9 @@ export class RelacionDevoluciones extends Document { // Devolucion Tributaria
     @Prop()
     Consecutivo: number;
 
+    @Prop()
+    Estado: string;
+
     @Prop( { type: [{ type: OrdenesDevolucionSchema, ref: 'OrdenesDevolucion' }] } )
     OrdenesDevolucion: OrdenesDevolucion[];
 }

@@ -16,6 +16,8 @@ export class RelacionDevolucionesDto {
   readonly FechaFin: Date;
   @ApiProperty()
   readonly Consecutivo: number;
+  @ApiProperty()
+  readonly Estado: string;
   @ApiProperty({ type: OrdenesDevolucionDto, isArray: true })
   readonly OrdenesDevolucion: OrdenesDevolucionDto[];
 }

@@ -97,7 +97,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-06-06T18:41:13.525Z"
+            "default": "2022-06-07T23:37:37.721Z"
           },
           "Activo": {
             "type": "boolean",
@@ -241,7 +241,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-06-06T18:41:13.549Z"
+            "default": "2022-06-07T23:37:37.741Z"
           },
           "Activo": {
             "type": "boolean",
@@ -291,7 +291,7 @@
           "Fecha_Modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-06-06T18:41:13.558Z"
+            "default": "2022-06-07T23:37:37.747Z"
           },
           "Activo": {
             "type": "boolean",
@@ -422,7 +422,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-06-06T18:41:13.564Z"
+            "default": "2022-06-07T23:37:37.751Z"
           },
           "Activo": {
             "type": "boolean",
@@ -543,6 +543,9 @@
           },
           "Tercero": {
             "type": "string"
+          },
+          "Detalle": {
+            "type": "string"
           }
         },
         "required": [
@@ -552,7 +555,8 @@
           "Naturaleza",
           "Credito",
           "Debito",
-          "Tercero"
+          "Tercero",
+          "Detalle"
         ]
       },
       "OrdenDevolucionDto": {
@@ -565,7 +569,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-06-06T18:41:13.575Z"
+            "default": "2022-06-07T23:37:37.759Z"
           },
           "Activo": {
             "type": "boolean",
@@ -727,7 +731,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-06-06T18:41:13.585Z"
+            "default": "2022-06-07T23:37:37.766Z"
           },
           "Activo": {
             "type": "boolean",
@@ -747,6 +751,9 @@
           "Consecutivo": {
             "type": "number"
           },
+          "Estado": {
+            "type": "string"
+          },
           "OrdenesDevolucion": {
             "type": "array",
             "items": {
@@ -759,6 +766,7 @@
           "FechaInicio",
           "FechaFin",
           "Consecutivo",
+          "Estado",
           "OrdenesDevolucion"
         ]
       }
