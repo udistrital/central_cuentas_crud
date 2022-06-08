@@ -26,7 +26,7 @@ export class RelacionDevolucionesController {
         return res.status(HttpStatus.OK).json({
             Data: relacionDevoluciones,
             Message: "Request successfull",
-            Status: "200",
+            Status: HttpStatus.OK,
             Success: true
         });
     }
