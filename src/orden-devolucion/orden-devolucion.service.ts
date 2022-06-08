@@ -1,4 +1,4 @@
-import { HttpException, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { OrdenDevolucion } from './schemas/orden-devolucion.schema';
@@ -23,16 +23,16 @@ export class OrdenDevolucionService {
       return {
         Data: postOrdenDevolucion,
         Message: "Registration successfull",
-        Status: "201",
+        Status: HttpStatus.CREATED,
         Success: true
       }
     } catch (error) {
       throw new HttpException({
         Data: error,
         Message: error.message,
-        Status: 400,
+        Status: HttpStatus.BAD_REQUEST,
         Success: false
-      }, 400)
+      }, HttpStatus.BAD_REQUEST)
 
     }
   }
@@ -45,16 +45,16 @@ export class OrdenDevolucionService {
       return {
         Data: getAll,
         Message: "Request successfull",
-        Status: 200,
+        Status: HttpStatus.OK,
         Success: true
       }
     } catch (error) {
       throw new HttpException({
         Data: error,
         Message: error.message,
-        Status: 404,
+        Status: HttpStatus.NOT_FOUND,
         Success: false
-      },404);
+      },HttpStatus.NOT_FOUND);
     }
   }
 
@@ -74,16 +74,16 @@ export class OrdenDevolucionService {
       return {
         Data: find,
         Message: "Update successfull",
-        Status: 200,
+        Status: HttpStatus.OK,
         Success: true
       }
     } catch (error) {
       throw new HttpException({
         Data: error,
         Message: error.message,
-        Status: 404,
+        Status: HttpStatus.NOT_FOUND,
         Success: false
-      }, 400);
+      }, HttpStatus.BAD_REQUEST);
     }
   }
 
@@ -95,16 +95,16 @@ export class OrdenDevolucionService {
           _id: id
         },
         Message: "Delete successfull",
-        Status: 200,
+        Status: HttpStatus.OK,
         Success: true
       }
     } catch (error) {
       throw new HttpException({
         Data: error,
         Message: error.message,
-        Status: 404,
+        Status: HttpStatus.NOT_FOUND,
         Success: false
-      }, 404);;
+      }, HttpStatus.NOT_FOUND);;
     }
   }
 }

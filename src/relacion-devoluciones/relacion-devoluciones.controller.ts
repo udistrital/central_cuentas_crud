@@ -23,7 +23,6 @@ export class RelacionDevolucionesController {
     @Get('/:id')
     async getById(@Res() res, @Param('id') id: string) {
         const relacionDevoluciones = await this.relacionDevolucionesSerivce.getById(id);
-        if (!relacionDevoluciones) throw new NotFoundException("not found resource");
         return res.status(HttpStatus.OK).json({
             Data: relacionDevoluciones,
             Message: "Request successfull",

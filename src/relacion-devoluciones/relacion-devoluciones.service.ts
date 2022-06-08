@@ -1,4 +1,4 @@
-import { HttpException, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { RelacionDevoluciones } from './schemas/relacion-devoluciones.schema';
@@ -10,29 +10,31 @@ import { EstadosDto } from '../estados/dto/estados.dto'
 
 @Injectable()
 export class RelacionDevolucionesService {
-  constructor(@InjectModel(RelacionDevoluciones.name) private readonly RelacionDevolucionesModel: Model<RelacionDevoluciones>,
-  private estadosService: EstadosService,
+  constructor(
+    @InjectModel(RelacionDevoluciones.name) private readonly RelacionDevolucionesModel: Model<RelacionDevoluciones>,
+    private estadosService: EstadosService,
   ) { }
 
   async post(relacionDevolucionesDto: RelacionDevolucionesDto) {
     try {
       const relacionDevoluciones = new this.RelacionDevolucionesModel(relacionDevolucionesDto);
-      relacionDevoluciones.Fecha_creacion = new Date();
-      relacionDevoluciones.Fecha_modificacion = new Date();
+      const now = new Date();
+      relacionDevoluciones.Fecha_creacion = now;
+      relacionDevoluciones.Fecha_modificacion = now;
       const postRelacionDevoluciones = await relacionDevoluciones.save();
       return {
         Data: postRelacionDevoluciones,
         Message: "Registration successfull",
-        Status: "201",
+        Status: HttpStatus.CREATED,
         Success: true
       }
     } catch (error) {
       throw new HttpException({
         Data: error,
         Message: error.message,
-        Status: 400,
+        Status: HttpStatus.BAD_REQUEST,
         Success: false
-      }, 400)
+      }, HttpStatus.BAD_REQUEST)
 
     }
   }
@@ -45,16 +47,16 @@ export class RelacionDevolucionesService {
       return {
         Data: getAll,
         Message: "Request successfull",
-        Status: 200,
+        Status: HttpStatus.OK,
         Success: true
       }
     } catch (error) {
       throw new HttpException({
         Data: error,
         Message: error.message,
-        Status: 404,
+        Status: HttpStatus.NOT_FOUND,
         Success: false
-      },404);
+      },HttpStatus.BAD_REQUEST);
     }
   }
 
@@ -62,7 +64,12 @@ export class RelacionDevolucionesService {
     try {
       return await this.RelacionDevolucionesModel.findById(id).exec();
     } catch (error) {
-      return null;
+      throw new HttpException({
+        Data: error,
+        Message: error.message,
+        Status: HttpStatus.NOT_FOUND,
+        Success: false
+      }, HttpStatus.NOT_FOUND);
     }
   }
 
@@ -74,16 +81,16 @@ export class RelacionDevolucionesService {
       return {
         Data: find,
         Message: "Update successfull",
-        Status: 200,
+        Status: HttpStatus.OK,
         Success: true
       }
     } catch (error) {
       throw new HttpException({
         Data: error,
         Message: error.message,
-        Status: 404,
+        Status: HttpStatus.BAD_REQUEST,
         Success: false
-      }, 400);
+      }, HttpStatus.NOT_FOUND);
     }
   }
 
@@ -95,16 +102,16 @@ export class RelacionDevolucionesService {
           _id: id
         },
         Message: "Delete successfull",
-        Status: 200,
+        Status: HttpStatus.OK,
         Success: true
       }
     } catch (error) {
       throw new HttpException({
         Data: error,
         Message: error.message,
-        Status: 404,
+        Status: HttpStatus.NOT_FOUND,
         Success: false
-      }, 404);;
+      }, HttpStatus.BAD_REQUEST);;
     }
   }
 }
