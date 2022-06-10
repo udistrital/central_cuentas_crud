@@ -16,4 +16,6 @@ export class MovimientoContableOrDevDto {
     readonly Debito: number;
     @ApiProperty()
     readonly Tercero: string;
+    @ApiProperty()
+    readonly Detalle: string;
 }

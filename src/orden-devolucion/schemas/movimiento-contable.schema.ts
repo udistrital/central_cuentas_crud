@@ -23,6 +23,9 @@ export class MovimientoContableOrDev extends Document {// Movimiento contable
 
     @Prop()
     Tercero: string
+
+    @Prop()
+    Detalle: string
 }
 
 export const MovimientoContableOrDevSchema = SchemaFactory.createForClass(MovimientoContableOrDev);

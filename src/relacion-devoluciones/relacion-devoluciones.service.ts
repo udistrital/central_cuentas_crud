@@ -1,27 +1,29 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { OrdenDevolucion } from './schemas/orden-devolucion.schema';
-import { OrdenDevolucionDto } from './dto/orden-devolucion.dto';
+import { RelacionDevoluciones } from './schemas/relacion-devoluciones.schema';
+import { RelacionDevolucionesDto } from './dto/relacion-devoluciones.dto';
 import { FilterDto } from '../shared/dto/filter.dto';
 import { FiltersService } from '../shared/filters/filters.service';
 import { EstadosService } from '../estados/estados.service';
 import { EstadosDto } from '../estados/dto/estados.dto'
 
 @Injectable()
-export class OrdenDevolucionService {
-  constructor(@InjectModel(OrdenDevolucion.name) private readonly OrdenDevolucionModel: Model<OrdenDevolucion>,
-  private estadosService: EstadosService,
+export class RelacionDevolucionesService {
+  constructor(
+    @InjectModel(RelacionDevoluciones.name) private readonly RelacionDevolucionesModel: Model<RelacionDevoluciones>,
+    private estadosService: EstadosService,
   ) { }
 
-  async post(ordenDevolucionDto: OrdenDevolucionDto) {
+  async post(relacionDevolucionesDto: RelacionDevolucionesDto) {
     try {
-      const ordenDevolucion = new this.OrdenDevolucionModel(ordenDevolucionDto);
-      ordenDevolucion.Fecha_creacion = new Date();
-      ordenDevolucion.Fecha_modificacion = new Date();
-      const postOrdenDevolucion = await ordenDevolucion.save();
+      const relacionDevoluciones = new this.RelacionDevolucionesModel(relacionDevolucionesDto);
+      const now = new Date();
+      relacionDevoluciones.Fecha_creacion = now;
+      relacionDevoluciones.Fecha_modificacion = now;
+      const postRelacionDevoluciones = await relacionDevoluciones.save();
       return {
-        Data: postOrdenDevolucion,
+        Data: postRelacionDevoluciones,
         Message: "Registration successfull",
         Status: HttpStatus.CREATED,
         Success: true
@@ -39,7 +41,7 @@ export class OrdenDevolucionService {
   async getAll(filterDto: FilterDto): Promise<any> {
     try {
       const filtersService = new FiltersService(filterDto);
-      const getAll = await this.OrdenDevolucionModel.find(filtersService.getQuery(), filtersService.getFields(), filtersService.getLimitAndOffset())
+      const getAll = await this.RelacionDevolucionesModel.find(filtersService.getQuery(), filtersService.getFields(), filtersService.getLimitAndOffset())
         .sort(filtersService.getSortBy())
         .exec();
       return {
@@ -54,23 +56,28 @@ export class OrdenDevolucionService {
         Message: error.message,
         Status: HttpStatus.NOT_FOUND,
         Success: false
-      },HttpStatus.NOT_FOUND);
+      },HttpStatus.BAD_REQUEST);
     }
   }
 
-  async getById(id: string): Promise<OrdenDevolucion> {
+  async getById(id: string): Promise<RelacionDevoluciones> {
     try {
-      return await this.OrdenDevolucionModel.findById(id).exec();
+      return await this.RelacionDevolucionesModel.findById(id).exec();
     } catch (error) {
-      return null;
+      throw new HttpException({
+        Data: error,
+        Message: error.message,
+        Status: HttpStatus.NOT_FOUND,
+        Success: false
+      }, HttpStatus.NOT_FOUND);
     }
   }
 
-  async put(id: string, ordenDevolucionDto: OrdenDevolucionDto): Promise<any> {
+  async put(id: string, relacionDevolucionesDto: RelacionDevolucionesDto): Promise<any> {
     try {
-      ordenDevolucionDto.Fecha_modificacion = new Date();//pendiente definir la actualizacion de fechas de modificacion para todas las colecciones
-      await this.OrdenDevolucionModel.findByIdAndUpdate(id, ordenDevolucionDto, { new: true }).exec();
-      const find = await this.OrdenDevolucionModel.findById(id).exec();
+      relacionDevolucionesDto.Fecha_modificacion = new Date();//pendiente definir la actualizacion de fechas de modificacion para todas las colecciones
+      await this.RelacionDevolucionesModel.findByIdAndUpdate(id, relacionDevolucionesDto, { new: true }).exec();
+      const find = await this.RelacionDevolucionesModel.findById(id).exec();
       return {
         Data: find,
         Message: "Update successfull",
@@ -81,15 +88,15 @@ export class OrdenDevolucionService {
       throw new HttpException({
         Data: error,
         Message: error.message,
-        Status: HttpStatus.NOT_FOUND,
+        Status: HttpStatus.BAD_REQUEST,
         Success: false
-      }, HttpStatus.BAD_REQUEST);
+      }, HttpStatus.NOT_FOUND);
     }
   }
 
   async delete(id: string): Promise<any> {
     try {
-      const deleteDevolucion = await this.OrdenDevolucionModel.findByIdAndRemove(id).exec();
+      const deleteRelacion = await this.RelacionDevolucionesModel.findByIdAndRemove(id).exec();
       return {
         Data: {
           _id: id
@@ -104,7 +111,7 @@ export class OrdenDevolucionService {
         Message: error.message,
         Status: HttpStatus.NOT_FOUND,
         Success: false
-      }, HttpStatus.NOT_FOUND);;
+      }, HttpStatus.BAD_REQUEST);;
     }
   }
 }

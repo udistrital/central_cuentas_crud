@@ -97,7 +97,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-06-06T04:43:57.222Z"
+            "default": "2022-06-10T01:24:41.102Z"
           },
           "Activo": {
             "type": "boolean",
@@ -241,7 +241,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-06-06T04:43:57.242Z"
+            "default": "2022-06-10T01:24:41.122Z"
           },
           "Activo": {
             "type": "boolean",
@@ -291,7 +291,7 @@
           "Fecha_Modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-06-06T04:43:57.250Z"
+            "default": "2022-06-10T01:24:41.128Z"
           },
           "Activo": {
             "type": "boolean",
@@ -422,7 +422,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-06-06T04:43:57.254Z"
+            "default": "2022-06-10T01:24:41.131Z"
           },
           "Activo": {
             "type": "boolean",
@@ -543,6 +543,9 @@
           },
           "Tercero": {
             "type": "string"
+          },
+          "Detalle": {
+            "type": "string"
           }
         },
         "required": [
@@ -552,7 +555,8 @@
           "Naturaleza",
           "Credito",
           "Debito",
-          "Tercero"
+          "Tercero",
+          "Detalle"
         ]
       },
       "OrdenDevolucionDto": {
@@ -565,7 +569,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-06-06T04:43:57.262Z"
+            "default": "2022-06-10T01:24:41.139Z"
           },
           "Activo": {
             "type": "boolean",
@@ -672,6 +676,98 @@
           "Consecutivo",
           "Estado",
           "MovimientoContable"
+        ]
+      },
+      "OrdenesDevolucionDto": {
+        "type": "object",
+        "properties": {
+          "Consecutivo": {
+            "type": "number"
+          },
+          "Beneficiario": {
+            "type": "string"
+          },
+          "TipoDocumento": {
+            "type": "string"
+          },
+          "NumeroDocumento": {
+            "type": "string"
+          },
+          "FormaPago": {
+            "type": "string"
+          },
+          "Banco": {
+            "type": "string"
+          },
+          "TipoCuenta": {
+            "type": "string"
+          },
+          "NumeroCuenta": {
+            "type": "string"
+          },
+          "Valor": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "Consecutivo",
+          "Beneficiario",
+          "TipoDocumento",
+          "NumeroDocumento",
+          "FormaPago",
+          "Banco",
+          "TipoCuenta",
+          "NumeroCuenta",
+          "Valor"
+        ]
+      },
+      "RelacionDevolucionesDto": {
+        "type": "object",
+        "properties": {
+          "Fecha_creacion": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "Fecha_modificacion": {
+            "format": "date-time",
+            "type": "string",
+            "default": "2022-06-10T01:24:41.146Z"
+          },
+          "Activo": {
+            "type": "boolean",
+            "default": true
+          },
+          "AreaFuncional": {
+            "type": "number"
+          },
+          "FechaInicio": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "FechaFin": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "Consecutivo": {
+            "type": "number"
+          },
+          "Estado": {
+            "type": "string"
+          },
+          "OrdenesDevolucion": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrdenesDevolucionDto"
+            }
+          }
+        },
+        "required": [
+          "AreaFuncional",
+          "FechaInicio",
+          "FechaFin",
+          "Consecutivo",
+          "Estado",
+          "OrdenesDevolucion"
         ]
       }
     }
@@ -1539,6 +1635,181 @@
         },
         "tags": [
           "orden-devolucion"
+        ]
+      }
+    },
+    "/relacion-devoluciones": {
+      "post": {
+        "operationId": "RelacionDevolucionesController_post",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RelacionDevolucionesDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "relacion-devoluciones"
+        ]
+      },
+      "get": {
+        "operationId": "RelacionDevolucionesController_get",
+        "parameters": [
+          {
+            "name": "query",
+            "required": false,
+            "in": "query",
+            "description": "query - Filter. e.g. col1:v1,col2:v2 …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "fields - Fields returned. e.g. col1,col2 …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortby",
+            "required": false,
+            "in": "query",
+            "description": "sortby - Sorted-by fields. e.g. col1,col2 …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order",
+            "required": false,
+            "in": "query",
+            "description": "order - Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc …",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "limit - Limit the size of result set. Must be an integer",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "description": "offset - Start position of result set. Must be an integer",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "populate",
+            "required": false,
+            "in": "query",
+            "description": "populate - show subqueries. Must be a boolean",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "relacion-devoluciones"
+        ]
+      }
+    },
+    "/relacion-devoluciones/{id}": {
+      "get": {
+        "operationId": "RelacionDevolucionesController_getById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "relacion-devoluciones"
+        ]
+      },
+      "put": {
+        "operationId": "RelacionDevolucionesController_put",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RelacionDevolucionesDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "relacion-devoluciones"
+        ]
+      },
+      "delete": {
+        "operationId": "RelacionDevolucionesController_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "relacion-devoluciones"
         ]
       }
     }
