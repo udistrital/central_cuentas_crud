@@ -70,10 +70,22 @@
           "Codigo": {
             "type": "string"
           },
+          "Tercero": {
+            "type": "string"
+          },
+          "NombreMovimiento": {
+            "type": "string"
+          },
+          "Detalle": {
+            "type": "string"
+          },
           "Nombre": {
             "type": "string"
           },
-          "Valor": {
+          "Debito": {
+            "type": "number"
+          },
+          "Credito": {
             "type": "number"
           },
           "Naturaleza": {
@@ -82,8 +94,12 @@
         },
         "required": [
           "Codigo",
+          "Tercero",
+          "NombreMovimiento",
+          "Detalle",
           "Nombre",
-          "Valor",
+          "Debito",
+          "Credito",
           "Naturaleza"
         ]
       },
@@ -97,7 +113,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-06-10T01:43:36.838Z"
+            "default": "2022-07-03T23:19:55.925Z"
           },
           "Activo": {
             "type": "boolean",
@@ -241,7 +257,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-06-10T01:43:36.861Z"
+            "default": "2022-07-03T23:19:55.943Z"
           },
           "Activo": {
             "type": "boolean",
@@ -291,7 +307,7 @@
           "Fecha_Modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-06-10T01:43:36.867Z"
+            "default": "2022-07-03T23:19:55.951Z"
           },
           "Activo": {
             "type": "boolean",
@@ -422,7 +438,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-06-10T01:43:36.872Z"
+            "default": "2022-07-03T23:19:55.954Z"
           },
           "Activo": {
             "type": "boolean",
@@ -569,7 +585,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-06-10T01:43:36.882Z"
+            "default": "2022-07-03T23:19:55.963Z"
           },
           "Activo": {
             "type": "boolean",
@@ -731,7 +747,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-06-10T01:43:36.890Z"
+            "default": "2022-07-03T23:19:55.971Z"
           },
           "Activo": {
             "type": "boolean",
