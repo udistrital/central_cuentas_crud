@@ -8,10 +8,22 @@ export class MovimientoContable extends Document {
     Codigo: string;
 
     @Prop()
+    Tercero: string;
+
+    @Prop()
+    NombreMovimiento: string;
+
+    @Prop()
+    Detalle: string;
+
+    @Prop()
     Nombre: string;
 
     @Prop()
-    Valor: number;
+    Debito: number;
+
+    @Prop()
+    Credito: number;
 
     @Prop()
     Naturaleza: string;
