@@ -27,6 +27,9 @@ export class MovimientoContable extends Document {
 
     @Prop()
     Naturaleza: string;
+
+    @Prop()
+    CuentaContableId: string;
 };
 
 export const MovimientoContableSchema = SchemaFactory.createForClass(MovimientoContable);

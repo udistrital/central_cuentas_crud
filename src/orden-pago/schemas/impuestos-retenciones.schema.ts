@@ -19,6 +19,9 @@ export class ImpuestosRetenciones extends Document {
     @Prop()
     Valor: number;
 
+    @Prop()
+    CuentaContableId: string;
+
 };
 
 export const ImpuestosRetencionesSchema = SchemaFactory.createForClass(ImpuestosRetenciones);

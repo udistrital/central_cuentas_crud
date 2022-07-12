@@ -54,6 +54,9 @@
           },
           "Valor": {
             "type": "number"
+          },
+          "CuentaContableId": {
+            "type": "string"
           }
         },
         "required": [
@@ -61,7 +64,8 @@
           "Codigo",
           "Descuento",
           "Nombre",
-          "Valor"
+          "Valor",
+          "CuentaContableId"
         ]
       },
       "MovimientoContableDto": {
@@ -90,6 +94,9 @@
           },
           "Naturaleza": {
             "type": "string"
+          },
+          "CuentaContableId": {
+            "type": "string"
           }
         },
         "required": [
@@ -100,7 +107,8 @@
           "Nombre",
           "Debito",
           "Credito",
-          "Naturaleza"
+          "Naturaleza",
+          "CuentaContableId"
         ]
       },
       "OrdenPagoDto": {
@@ -113,7 +121,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-07-03T23:19:55.925Z"
+            "default": "2022-07-12T21:35:07.232Z"
           },
           "Activo": {
             "type": "boolean",
@@ -173,6 +181,9 @@
           "CuentaEndoso": {
             "type": "string"
           },
+          "CuentaEndosoId": {
+            "type": "string"
+          },
           "ValorOP": {
             "type": "number"
           },
@@ -195,6 +206,9 @@
             }
           },
           "CuentaValorNeto": {
+            "type": "string"
+          },
+          "CuentaValorNetoId": {
             "type": "string"
           },
           "MovimientoContable": {
@@ -223,12 +237,14 @@
           "BeneficiarioEndoso",
           "ValorEndoso",
           "CuentaEndoso",
+          "CuentaEndosoId",
           "ValorOP",
           "Estado",
           "ImputacionPresupuestal",
           "Concepto",
           "ImpuestosRetenciones",
           "CuentaValorNeto",
+          "CuentaValorNetoId",
           "MovimientoContable"
         ]
       },
@@ -257,7 +273,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-07-03T23:19:55.943Z"
+            "default": "2022-07-12T21:35:07.250Z"
           },
           "Activo": {
             "type": "boolean",
@@ -307,7 +323,7 @@
           "Fecha_Modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-07-03T23:19:55.951Z"
+            "default": "2022-07-12T21:35:07.257Z"
           },
           "Activo": {
             "type": "boolean",
@@ -438,7 +454,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-07-03T23:19:55.954Z"
+            "default": "2022-07-12T21:35:07.260Z"
           },
           "Activo": {
             "type": "boolean",
@@ -585,7 +601,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-07-03T23:19:55.963Z"
+            "default": "2022-07-12T21:35:07.268Z"
           },
           "Activo": {
             "type": "boolean",
@@ -747,7 +763,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-07-03T23:19:55.971Z"
+            "default": "2022-07-12T21:35:07.276Z"
           },
           "Activo": {
             "type": "boolean",
