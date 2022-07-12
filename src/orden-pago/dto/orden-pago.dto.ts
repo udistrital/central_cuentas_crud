@@ -49,6 +49,8 @@ export class OrdenPagoDto {
   @ApiProperty()
   readonly CuentaEndosoId: string;
   @ApiProperty()
+  readonly CuentaEndosoNaturaleza: string;
+  @ApiProperty()
   readonly ValorOP: number;
   @ApiProperty()
   readonly Estado: string;
@@ -62,6 +64,8 @@ export class OrdenPagoDto {
   readonly CuentaValorNeto: string;
   @ApiProperty()
   readonly CuentaValorNetoId: string;
+  @ApiProperty()
+  readonly CuentaValorNetoNaturaleza: string;
   @ApiProperty({ type: MovimientoContableDto, isArray: true })
   readonly MovimientoContable: MovimientoContableDto[];
 }
