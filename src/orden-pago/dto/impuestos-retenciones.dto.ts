@@ -14,4 +14,6 @@ export class ImpuestosRetencionesDto {
     readonly Valor: number
     @ApiProperty()
     readonly CuentaContableId: string
+    @ApiProperty()
+    readonly CuentaContableNaturaleza: string
 }
