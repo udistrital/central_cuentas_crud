@@ -72,6 +72,9 @@ export class OrdenPago extends Document { // OrdenPago
     CuentaEndoso: string;
 
     @Prop()
+    CuentaEndosoId: string;
+
+    @Prop()
     ValorOP: number;
 
     @Prop()
@@ -88,6 +91,9 @@ export class OrdenPago extends Document { // OrdenPago
 
     @Prop()
     CuentaValorNeto: string;
+
+    @Prop()
+    CuentaValorNetoId: string;
 
     @Prop( {type: [{ type: MovimientoContableSchema, ref: 'MovimientoContable'}]})
     MovimientoContable: MovimientoContable[];

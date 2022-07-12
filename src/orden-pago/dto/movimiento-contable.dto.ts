@@ -18,4 +18,6 @@ export class MovimientoContableDto {
     readonly Credito: number;
     @ApiProperty()
     readonly Naturaleza: string;
+    @ApiProperty()
+    readonly CuentaContableId: string;
 }
