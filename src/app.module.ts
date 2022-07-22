@@ -3,21 +3,29 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from './config/config.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Configuration } from './config/configuration';
+import { environment } from './config/configuration';
 import { OrdenPagoModule } from './orden-pago/orden-pago.module';
 import { FiltersService } from './shared/filters/filters.service';
 import { EstadosModule } from './estados/estados.module';
+import { AutorizacionGiroModule } from './autorizacion-giro/autorizacion-giro.module';
+import { DevolucionTributariaModule } from './devolucion-tributaria/devolucion-tributaria.module';
+import { OrdenDevolucionModule } from './orden-devolucion/orden-devolucion.module';
+import { RelacionDevolucionesModule } from './relacion-devoluciones/relacion-devoluciones.module';
 
 
 
 @Module({
   imports: [
     ConfigModule,
-    MongooseModule.forRoot(`mongodb://${Configuration.environment.USER_DB}:${Configuration.environment.PASS_DB}@`+
-    `${Configuration.environment.HOST_DB}:${Configuration.environment.PORT_DB}/${Configuration.environment.NAME_DB}?authSource=${Configuration.environment.AUTH_DB}`,
+    MongooseModule.forRoot(`mongodb://${environment.USER_DB}:${environment.PASS_DB}@`+
+    `${environment.HOST_DB}:${environment.PORT_DB}/${environment.NAME_DB}?authSource=${environment.AUTH_DB}`,
     { useFindAndModify: false }),
     OrdenPagoModule,
-    EstadosModule
+    EstadosModule,
+    AutorizacionGiroModule,
+    DevolucionTributariaModule,
+    OrdenDevolucionModule,
+    RelacionDevolucionesModule,
   ],
   controllers: [AppController],
   providers: [AppService, FiltersService],

@@ -2,14 +2,22 @@
 
 API CRUD para la gestion de ordenes de pago y relaciones de autorizacion.
 
+## Estado CI
+
+| Develop | Release 1.0.0 | Master |
+| -- | -- | -- |
+| [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/central_cuentas_crud/status.svg?ref=refs/heads/develop)](https://hubci.portaloas.udistrital.edu.co/udistrital/central_cuentas_crud) | [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/central_cuentas_crud/status.svg?ref=refs/heads/release/1.0.0)](https://hubci.portaloas.udistrital.edu.co/udistrital/central_cuentas_crud) | [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/central_cuentas_crud/status.svg?ref=refs/heads/master)](https://hubci.portaloas.udistrital.edu.co/udistrital/central_cuentas_crud) |
+
 ## Especificaciones Técnicas
 
 ### Tecnologías Implementadas y Versiones
+
 * [NestJS](https://github.com/nestjs/nest)
 * [Docker](https://docs.docker.com/engine/install/ubuntu/)
 * [Docker Compose](https://docs.docker.com/compose/)
 
 ### Variables de Entorno
+
 ```bash
 CENTRAL_CUENTAS_PORT=[puerto del api]
 CENTRAL_CUENTAS_MONGO_URL=[url o ip del servicio]
@@ -19,7 +27,8 @@ CENTRAL_CUENTAS_MONGO_PASS=[contraseña]
 CENTRAL_CUENTAS_MONGO_DB_NAME=[nombre de base de datos]
 CENTRAL_CUENTAS_MONGO_DB_AUTH=[nombre de base de datos de autenticacion]
 ```
-**NOTA:** Las variables se pueden ver en el fichero conf/app.conf y están identificadas con CENTRAL_CUENTAS___...
+
+**NOTA:** Las variables se pueden ver en el fichero conf/app.conf y están identificadas con `CENTRAL_CUENTAS_...`
 
 <!-- ### Ejecución del Proyecto
 ```shell
@@ -45,6 +54,7 @@ EVALUACIONES_MONGO_CRUD=8080 EVALUACIONES_MONGO_CRUD=127.0.0.1:27017 EVALUACIONE
 ``` -->
 
 ### Ejecución docker-compose
+
 ```bash
 #1. Clonar el repositorio
 git clone -b develop https://github.com/udistrital/central_cuentas_crud
@@ -56,7 +66,7 @@ cd central_cuentas_crud
 docker-compose build
 
 #5. Ejecutar el compose del contenedor
-docker-compose up 
+docker-compose up
 
 #6. Comprobar que los contenedores estén en ejecución
 docker ps
@@ -65,13 +75,14 @@ docker ps
 ### Ejecución Pruebas
 
 Pruebas unitarias
+
 ```bash
 # En Proceso
 ```
 
 ## Modelo de Datos
-[Modelo de Datos](https://github.com/udistrital/financiera_documentacion/blob/master/central_cuentas/orden_pago/orden_pafo.md)
 
+[Modelo de Datos](https://github.com/udistrital/financiera_documentacion/blob/master/central_cuentas/orden_pago/orden_pafo.md)
 
 ## Licencia
 

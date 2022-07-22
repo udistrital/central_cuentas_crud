@@ -17,6 +17,18 @@ export class OrdenPagoController {
     get(@Query() filterDto: FilterDto) {
         return this.ordenPagoService.getAll(filterDto)
     }
+
+    @Get('/:id')
+    async getById(@Res() res, @Param('id') id: string) {
+        const ordenPago = await this.ordenPagoService.getById(id);
+        if (!ordenPago) throw new NotFoundException("not found resource");
+        return res.status(HttpStatus.OK).json({
+            Data: ordenPago,
+            Message: "Request successfull",
+            Status: "200",
+            Success: true
+        });
+    }
     @Put('/:id')
     put(@Param('id') id: string, @Body() ordenPagoDto: OrdenPagoDto) {
         return this.ordenPagoService.put(id, ordenPagoDto)

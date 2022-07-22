@@ -10,28 +10,16 @@ import { EstadosDto } from '../estados/dto/estados.dto'
 
 @Injectable()
 export class OrdenPagoService {
-  constructor(@InjectModel(OrdenPago.name) private readonly ordenPagoModel: Model<OrdenPago>,
+  constructor(@InjectModel(OrdenPago.name) private readonly OrdenPagoModel: Model<OrdenPago>,
   private estadosService: EstadosService,
   ) { }
 
   async post(ordenPagoDto: OrdenPagoDto) {
     try {
-      const ordenPago = new this.ordenPagoModel(ordenPagoDto);
+      const ordenPago = new this.OrdenPagoModel(ordenPagoDto);
       ordenPago.Fecha_creacion = new Date();
       ordenPago.Fecha_modificacion = new Date();
       const postOrdenPago = await ordenPago.save();
-      console.log(postOrdenPago['_id'])
-      await this.estadosService.post( {
-        Activo: true,
-        Descripcion: '',
-        Estado_id: ordenPagoDto.Estados.Estado_id,
-        Fecha_creacion: new Date(),
-        Fecha_modificacion: new Date(),
-        Documento: {
-          Coleccion: 'orden_pago',
-          Documento_id: postOrdenPago['_id']
-        }
-      } )
       return {
         Data: postOrdenPago,
         Message: "Registration successfull",
@@ -51,7 +39,7 @@ export class OrdenPagoService {
   async getAll(filterDto: FilterDto): Promise<any> {
     try {
       const filtersService = new FiltersService(filterDto);
-      const getAll = await this.ordenPagoModel.find(filtersService.getQuery(), filtersService.getFields(), filtersService.getLimitAndOffset())
+      const getAll = await this.OrdenPagoModel.find(filtersService.getQuery(), filtersService.getFields(), filtersService.getLimitAndOffset())
         .sort(filtersService.getSortBy())
         .exec();
       return {
@@ -72,7 +60,7 @@ export class OrdenPagoService {
 
   async getById(id: string): Promise<OrdenPago> {
     try {
-      return await this.ordenPagoModel.findById(id).exec();
+      return await this.OrdenPagoModel.findById(id).exec();
     } catch (error) {
       return null;
     }
@@ -81,8 +69,8 @@ export class OrdenPagoService {
   async put(id: string, ordenPagoDto: OrdenPagoDto): Promise<any> {
     try {
       ordenPagoDto.Fecha_modificacion = new Date();//pendiente definir la actualizacion de fechas de modificacion para todas las colecciones
-      await this.ordenPagoModel.findByIdAndUpdate(id, ordenPagoDto, { new: true }).exec();
-      const find = await this.ordenPagoModel.findById(id).exec();
+      await this.OrdenPagoModel.findByIdAndUpdate(id, ordenPagoDto, { new: true }).exec();
+      const find = await this.OrdenPagoModel.findById(id).exec();
       return {
         Data: find,
         Message: "Update successfull",
@@ -101,7 +89,7 @@ export class OrdenPagoService {
 
   async delete(id: string): Promise<any> {
     try {
-      const deleteOrden = await this.ordenPagoModel.findByIdAndRemove(id).exec();
+      const deleteOrden = await this.OrdenPagoModel.findByIdAndRemove(id).exec();
       return {
         Data: {
           _id: id

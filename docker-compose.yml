@@ -2,7 +2,7 @@ version: '3'
 
 services: 
     mongo:
-        image: mongo
+        image: mongo:4
         restart: always
         container_name: mongodb
         environment: 
@@ -19,7 +19,7 @@ services:
         container_name: "central-cuentas-service"
         restart: always
         env_file: 
-        - .env
+        - vpn.env
         environment: 
             - CENTRAL_CUENTAS_MONGO_COLLECTION=${CENTRAL_CUENTAS_MONGO_COLLECTION}
             - CENTRAL_CUENTAS_MONGO_DB_NAME=${CENTRAL_CUENTAS_MONGO_DB_NAME}
