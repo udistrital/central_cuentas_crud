@@ -125,7 +125,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-07-12T22:13:20.476Z"
+            "default": "2022-07-22T01:50:09.958Z"
           },
           "Activo": {
             "type": "boolean",
@@ -285,7 +285,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-07-12T22:13:20.492Z"
+            "default": "2022-07-22T01:50:09.977Z"
           },
           "Activo": {
             "type": "boolean",
@@ -335,7 +335,7 @@
           "Fecha_Modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-07-12T22:13:20.500Z"
+            "default": "2022-07-22T01:50:09.984Z"
           },
           "Activo": {
             "type": "boolean",
@@ -466,7 +466,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-07-12T22:13:20.504Z"
+            "default": "2022-07-22T01:50:09.989Z"
           },
           "Activo": {
             "type": "boolean",
@@ -613,7 +613,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-07-12T22:13:20.513Z"
+            "default": "2022-07-22T01:50:09.997Z"
           },
           "Activo": {
             "type": "boolean",
@@ -775,7 +775,7 @@
           "Fecha_modificacion": {
             "format": "date-time",
             "type": "string",
-            "default": "2022-07-12T22:13:20.520Z"
+            "default": "2022-07-22T01:50:10.004Z"
           },
           "Activo": {
             "type": "boolean",
